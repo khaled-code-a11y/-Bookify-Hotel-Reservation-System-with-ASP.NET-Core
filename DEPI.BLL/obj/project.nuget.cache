@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AeUQPggudL8=",
+  "dgSpecHash": "8ZlcI6UiQRE=",
   "success": true,
-  "projectFilePath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\DEPI.BLL\\DEPI.BLL.csproj",
+  "projectFilePath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.BLL\\DEPI.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
