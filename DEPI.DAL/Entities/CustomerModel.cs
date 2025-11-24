@@ -12,6 +12,7 @@ namespace DEPI.DAL.Entities
         public int UserID { get; set; }
 
         public UserModel? User { get; set; }
+        public ICollection<CustomerModel> Customer { get; set; }
 
     }
 }

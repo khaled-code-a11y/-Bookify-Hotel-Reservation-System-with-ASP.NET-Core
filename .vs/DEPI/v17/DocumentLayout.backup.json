@@ -1,0 +1,156 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\configuration\\roletypeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\configuration\\roletypeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\configuration\\customerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\configuration\\customerconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\entities\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\entities\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\entities\\roomtypemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\entities\\roomtypemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\entities\\roletypemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\entities\\roletypemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\entities\\customermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\entities\\customermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\entities\\roommodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\entities\\roommodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|c:\\users\\khaled\\onedrive\\desktop\\-bookify-hotel-reservation-system-with-asp.net-core\\-bookify-hotel-reservation-system-with-asp.net-core\\depi.dal\\configuration\\roomconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FDDE90C-9C52-4072-AFA8-6EF22C10B876}|DEPI.DAL\\DEPI.DAL.csproj|solutionrelative:depi.dal\\configuration\\roomconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StaffModel.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\StaffModel.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Entities\\StaffModel.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\StaffModel.cs",
+              "RelativeToolTip": "DEPI.DAL\\Entities\\StaffModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:06:34.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoomTypeModel.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\RoomTypeModel.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Entities\\RoomTypeModel.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\RoomTypeModel.cs",
+              "RelativeToolTip": "DEPI.DAL\\Entities\\RoomTypeModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:06:32.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RoomModel.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\RoomModel.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Entities\\RoomModel.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\RoomModel.cs",
+              "RelativeToolTip": "DEPI.DAL\\Entities\\RoomModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:05:19.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RoleTypeModel.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\RoleTypeModel.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Entities\\RoleTypeModel.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\RoleTypeModel.cs",
+              "RelativeToolTip": "DEPI.DAL\\Entities\\RoleTypeModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:04:34.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RoomConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Configuration\\RoomConfig.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Configuration\\RoomConfig.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Configuration\\RoomConfig.cs",
+              "RelativeToolTip": "DEPI.DAL\\Configuration\\RoomConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:04:28.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RoleTypeConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Configuration\\RoleTypeConfig.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Configuration\\RoleTypeConfig.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Configuration\\RoleTypeConfig.cs",
+              "RelativeToolTip": "DEPI.DAL\\Configuration\\RoleTypeConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:04:26.578Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomerConfig.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Configuration\\CustomerConfig.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Configuration\\CustomerConfig.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Configuration\\CustomerConfig.cs",
+              "RelativeToolTip": "DEPI.DAL\\Configuration\\CustomerConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:03:17.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CustomerModel.cs",
+              "DocumentMoniker": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\CustomerModel.cs",
+              "RelativeDocumentMoniker": "DEPI.DAL\\Entities\\CustomerModel.cs",
+              "ToolTip": "C:\\Users\\Khaled\\OneDrive\\Desktop\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\Entities\\CustomerModel.cs",
+              "RelativeToolTip": "DEPI.DAL\\Entities\\CustomerModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T01:03:06.825Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

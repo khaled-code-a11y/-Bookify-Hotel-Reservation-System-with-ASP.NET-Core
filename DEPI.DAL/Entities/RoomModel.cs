@@ -14,5 +14,8 @@ namespace DEPI.DAL.Entities
         public int TypeId { get; set; }
 
         public RoomTypeModel? RoomType { get; set; }
+        public ICollection<ReservedroomModel> Reservedroom { get; set; }
+
+
     }
 }
