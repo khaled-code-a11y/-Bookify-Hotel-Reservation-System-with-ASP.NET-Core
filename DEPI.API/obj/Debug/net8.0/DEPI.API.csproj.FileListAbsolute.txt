@@ -1,7 +1,0 @@
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\DEPI.API.csproj.AssemblyReference.cache
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\rpswa.dswa.cache.json
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\DEPI.API.GeneratedMSBuildEditorConfig.editorconfig
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\DEPI.API.AssemblyInfoInputs.cache
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\DEPI.API.AssemblyInfo.cs
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\DEPI.API.csproj.CoreCompileInputs.cache
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.API\obj\Debug\net8.0\DEPI.API.MvcApplicationPartsAssemblyInfo.cache

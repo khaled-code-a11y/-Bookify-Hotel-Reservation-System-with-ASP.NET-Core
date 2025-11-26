@@ -1,5 +1,0 @@
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.BLL\obj\Debug\net8.0\DEPI.BLL.GeneratedMSBuildEditorConfig.editorconfig
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.BLL\obj\Debug\net8.0\DEPI.BLL.AssemblyInfoInputs.cache
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.BLL\obj\Debug\net8.0\DEPI.BLL.AssemblyInfo.cs
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.BLL\obj\Debug\net8.0\DEPI.BLL.csproj.CoreCompileInputs.cache
-F:\.NET study\Projects\DEPI\Project\DEPI\DEPI.BLL\obj\Debug\net8.0\DEPI.BLL.csproj.AssemblyReference.cache
