@@ -1,0 +1,15 @@
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\bin\Debug\net9.0\DEPI.BLL.deps.json
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\bin\Debug\net9.0\DEPI.BLL.dll
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\bin\Debug\net9.0\DEPI.BLL.pdb
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\bin\Debug\net9.0\DEPI.DAL.dll
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\bin\Debug\net9.0\DEPI.DAL.pdb
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.csproj.AssemblyReference.cache
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.GeneratedMSBuildEditorConfig.editorconfig
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.AssemblyInfoInputs.cache
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.AssemblyInfo.cs
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.csproj.CoreCompileInputs.cache
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.csproj.Up2Date
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.dll
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\refint\DEPI.BLL.dll
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\DEPI.BLL.pdb
+F:\.NET study\Projects\DEPI\Project\DEPI\Hotel\DEPI\DEPI.BLL\obj\Debug\net9.0\ref\DEPI.BLL.dll
