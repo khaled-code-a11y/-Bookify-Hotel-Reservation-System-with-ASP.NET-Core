@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net9.0": {
+      "AutoMapper/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Azure.Core/1.38.0": {
         "type": "package",
         "dependencies": {
@@ -35,6 +48,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Azure.Identity.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "FluentValidation/11.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {
             "related": ".xml"
           }
         }
@@ -736,6 +762,22 @@
     }
   },
   "libraries": {
+    "AutoMapper/10.0.0": {
+      "sha512": "T09NoqMZBqw0/JEauXulxnmmerl0Zj03e0r6VCcJ0LURWBIaYxZPPoiDv8bHf5Y4x2xcXJp4JPXoCaeOMJfHEA==",
+      "type": "package",
+      "path": "automapper/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "automapper.10.0.0.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net461/AutoMapper.dll",
+        "lib/net461/AutoMapper.xml",
+        "lib/netstandard2.0/AutoMapper.dll",
+        "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
     "Azure.Core/1.38.0": {
       "sha512": "IuEgCoVA0ef7E4pQtpC3+TkPbzaoQfa77HlfJDmfuaJUCVJmn7fT0izamZiryW5sYUFKizsftIxMkXKbgIcPMQ==",
       "type": "package",
@@ -772,6 +814,27 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "FluentValidation/11.0.0": {
+      "sha512": "cD0VaOQfVZGxp3UFBDET5KztMe1W0QUgk7vP/e1zus0ofALqab5/B5S319+XEFvhw0KEStS3yfCDGpvQM10C6A==",
+      "type": "package",
+      "path": "fluentvalidation/11.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.0.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
@@ -1827,7 +1890,9 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "DEPI.DAL >= 1.0.0"
+      "AutoMapper >= 10.0.0",
+      "DEPI.DAL >= 1.0.0",
+      "FluentValidation >= 11.0.0"
     ]
   },
   "packageFolders": {
@@ -1837,11 +1902,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\Hotel\\DEPI\\DEPI.BLL\\DEPI.BLL.csproj",
+      "projectUniqueName": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.BLL\\DEPI.BLL.csproj",
       "projectName": "DEPI.BLL",
-      "projectPath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\Hotel\\DEPI\\DEPI.BLL\\DEPI.BLL.csproj",
+      "projectPath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.BLL\\DEPI.BLL.csproj",
       "packagesPath": "C:\\Users\\Nour_Allah\\.nuget\\packages\\",
-      "outputPath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\Hotel\\DEPI\\DEPI.BLL\\obj\\",
+      "outputPath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1862,8 +1927,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\Hotel\\DEPI\\DEPI.DAL\\DEPI.DAL.csproj": {
-              "projectPath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\Hotel\\DEPI\\DEPI.DAL\\DEPI.DAL.csproj"
+            "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\DEPI.DAL.csproj": {
+              "projectPath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.DAL\\DEPI.DAL.csproj"
             }
           }
         }
@@ -1883,6 +1948,16 @@
     "frameworks": {
       "net9.0": {
         "targetAlias": "net9.0",
+        "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[10.0.0, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[11.0.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

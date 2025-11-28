@@ -1,7 +1,4 @@
 
-using DEPI.DAL;
-using Microsoft.EntityFrameworkCore;
-
 namespace DEPI.API
 {
     public class Program
@@ -10,32 +7,44 @@ namespace DEPI.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // ============================
+            // Add services to the container
+            // ============================
 
+            // --- Repository & Service ---
+            builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+            builder.Services.AddScoped<IRoomService, RoomService>();
+
+            // --- AutoMapper ---
+            builder.Services.AddAutoMapper(typeof(RoomMap));
+
+            // --- FluentValidation ---
+            builder.Services.AddValidatorsFromAssemblyContaining<RoomValidation>();
+
+            // --- Controllers ---
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
 
-            // DbContext Configuration
+            // --- DbContext ---
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-                throw new InvalidOperationException("Connection string 'DefaultConnection' Not Found");
+                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString));
+
+            builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+             options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+             options.JsonSerializerOptions.WriteIndented = true;
+            });
             var app = builder.Build();
 
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.MapOpenApi();
-            }
+            // ============================
+            // Configure HTTP request pipeline
+            // ============================
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

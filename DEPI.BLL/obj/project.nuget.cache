@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ObYAkU/oMzs=",
+  "dgSpecHash": "2wBJ5Pvgj1I=",
   "success": true,
-  "projectFilePath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\Hotel\\DEPI\\DEPI.BLL\\DEPI.BLL.csproj",
+  "projectFilePath": "F:\\.NET study\\Projects\\DEPI\\Project\\DEPI\\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\\DEPI.BLL\\DEPI.BLL.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nour_Allah\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
+    "C:\\Users\\Nour_Allah\\.nuget\\packages\\fluentvalidation\\11.0.0\\fluentvalidation.11.0.0.nupkg.sha512",
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.6\\microsoft.data.sqlclient.5.1.6.nupkg.sha512",
     "C:\\Users\\Nour_Allah\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.1\\microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512",

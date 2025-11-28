@@ -1,0 +1,12 @@
+﻿global using DEPI.BLL.IServices;
+global using DEPI.BLL.Mapping;
+global using DEPI.BLL.Services;
+global using DEPI.DAL;
+global using DEPI.DAL.IRepositories;
+global using DEPI.DAL.Repositories;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using DEPI.BLL.Validation;
+global using FluentValidation;
+global using DEPI.BLL.DTOS;
