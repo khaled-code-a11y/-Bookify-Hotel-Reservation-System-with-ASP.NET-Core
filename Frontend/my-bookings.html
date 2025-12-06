@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Bookings - AmunraHotel</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="block">
+            <div class="logo">AmunraHotel</div>
+            <nav id="navbar">
+                <a href="index.html">Home</a>
+                <a href="rooms.html">Hotels</a>
+                <a href="index.html#Offers">Offers</a>
+                <a href="index.html#about">About</a>
+                <a href="dashboard.html" class="admin-dashboard-link">Dashboard</a>
+            </nav>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+            <div class="actions">
+                <div class="search-field-container">
+                    <button class="icon search-icon" id="toggleSearchBtn">🔍</button>
+                    <div class="search-input-wrap hidden" id="searchHeaderInput">
+                        <input type="text" id="headerSearchInput" placeholder="Search by hotel name...">
+                        <button class="close-search-btn" id="closeSearchInput">&times;</button>
+                        <div class="search-results-dropdown hidden" id="searchResults"></div>
+                    </div>
+                </div>
+                <div class="user-dropdown-container">
+                    <button class="icon user-icon" id="userIcon">👤</button>
+                    <div class="user-dropdown-menu" id="userMenu">
+                        <a href="#" class="dropdown-item dashboard">
+                            <div class="user-info">
+                                <img src="img/khaled.png" alt="User Avatar" class="user-avatar">
+                                <div>
+                                    <span class="user-name">AmunraHotel</span>
+                                    <span class="user-email">user.AmunraHotel@gmail.com</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="manage-account.html" class="dropdown-item"><i class="fas fa-cog"></i> Manage
+                            account</a>
+                        <a href="my-bookings.html" class="dropdown-item active-booking-link"><i class="fas fa-book"></i>
+                            My Bookings</a> <a href="index.html" class="dropdown-item sign-out"><i
+                                class="fas fa-sign-out-alt"></i> Sign out</a>
+                        <small class="secure-label">Secured by Amunra</small>
+                    </div>
+                </div>
+                <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="bookings-page-main">
+        <div class="bookings-container">
+            <div class="bookings-header-text">
+                <h1>My Bookings</h1>
+                <p>Easily manage your past, current, and upcoming hotel reservations in one place. Plan your trips
+                    seamlessly with just a few clicks.</p>
+            </div>
+
+            <div class="bookings-list-titles">
+                <span class="booking-hotel-title">Hotels</span>
+                <span class="booking-dates-title">Date & Timings</span>
+                <span class="booking-payment-title">Payment</span>
+            </div>
+
+            <div class="booking-item">
+                <div class="booking-hotel-info">
+                    <img src="img/chastity-cortijo-M8iGdeTSOkg-unsplash 1.png" alt="Hotel Image" class="booking-img">
+                    <div class="hotel-details-text">
+                        <h4>Urbanza Suites (Double Bed)</h4>
+                        <p class="hotel-address"><i class="fas fa-map-marker-alt"></i> Main Road 123 Street, 23 Colony
+                        </p>
+                        <p class="hotel-guests"><i class="fas fa-user"></i> Guests: 1</p>
+                        <p class="hotel-total">Total: $399</p>
+                    </div>
+                </div>
+
+                <div class="booking-dates">
+                    <div class="check-info"><span>Check-in:</span> Tue Apr 29 2025</div>
+                    <div class="check-info"><span>Check-Out:</span> Wed Apr 30 2025</div>
+                </div>
+
+                <div class="booking-payment-status unpaid-status">
+                    <span class="status-label"><i class="fas fa-circle"></i> Unpaid</span>
+                    <a href="payment.html?booking_id=123" class="btn-pay-now">Pay Now</a>
+                </div>
+            </div>
+
+            <div class="booking-item paid-item">
+                <div class="booking-hotel-info">
+                    <img src="img/visualsofdana-T5pL6ciEn-I-unsplash 1.png" alt="Hotel Image" class="booking-img">
+                    <div class="hotel-details-text">
+                        <h4>Urbanza Suites (Double Bed)</h4>
+                        <p class="hotel-address"><i class="fas fa-map-marker-alt"></i> Main Road 123 Street, 23 Colony
+                        </p>
+                        <p class="hotel-guests"><i class="fas fa-user"></i> Guests: 2</p>
+                        <p class="hotel-total">Total: $299</p>
+                    </div>
+                </div>
+
+                <div class="booking-dates">
+                    <div class="check-info"><span>Check-in:</span> Wed Apr 30 2025</div>
+                    <div class="check-info"><span>Check-Out:</span> Thu May 01 2025</div>
+                </div>
+
+                <div class="booking-payment-status paid-status">
+                    <span class="status-label"><i class="fas fa-circle"></i> Paid</span>
+                </div>
+            </div>
+
+            <div class="booking-item">
+                <div class="booking-hotel-info">
+                    <img src="img/reisetopia-pSDe7ePo0Tc-unsplash 1.png" alt="Hotel Image" class="booking-img">
+                    <div class="hotel-details-text">
+                        <h4>Urbanza Suites (Double Bed)</h4>
+                        <p class="hotel-address"><i class="fas fa-map-marker-alt"></i> Main Road 123 Street, 23 Colony
+                        </p>
+                        <p class="hotel-guests"><i class="fas fa-user"></i> Guests: 1</p>
+                        <p class="hotel-total">Total: $399</p>
+                    </div>
+                </div>
+
+                <div class="booking-dates">
+                    <div class="check-info"><span>Check-in:</span> Sun Apr 27 2025</div>
+                    <div class="check-info"><span>Check-Out:</span> Mon Apr 28 2025</div>
+                </div>
+
+                <div class="booking-payment-status unpaid-status">
+                    <span class="status-label"><i class="fas fa-circle"></i> Unpaid</span>
+                    <a href="payment.html?booking_id=456" class="btn-pay-now">Pay Now</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
