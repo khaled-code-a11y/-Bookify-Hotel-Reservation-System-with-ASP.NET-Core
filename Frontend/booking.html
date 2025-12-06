@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Booking - AmunraHotel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="page-booking">
+        <header>
+            <div class="block">
+                <div class="logo">AmunraHotel</div>
+                <nav id="navbar">
+                    <a href="index.html">Home</a>
+                    <a href="rooms.html">Rooms</a>
+                    <a href="index.html#Offers">Offers</a>
+                    <a href="index.html#about">About</a>
+                    <a href="dashboard.html" class="admin-dashboard-link">Dashboard</a>
+                </nav>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <div class="actions"><button class="login-btn">Login</button></div>
+            </div>
+        </header>
+
+        <main>
+            <div class="booking-page-container">
+                <h2>Book Your Stay</h2>
+                <div id="booking-box">
+                    <form id="bookingForm">
+                        <div class="form-dates-guests-group">
+                            <label style="width:100%;margin-bottom:15px;display:block;">
+                                Full Name
+                                <input required type="text" name="clientName" placeholder="John Doe"
+                                    style="width:100%;padding:10px;margin-top:5px;border:1px solid #ddd;border-radius:6px;" />
+                            </label>
+                            <label>
+                                Check-in
+                                <input required type="date" name="checkin" />
+                            </label>
+                            <label>
+                                Check-out
+                                <input required type="date" name="checkout" />
+                            </label>
+                            <label>
+                                Guests
+                                <select name="guests">
+                                    <option>1</option>
+                                    <option selected>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn-primary" type="submit">Confirm Booking</button>
+                            <a href="#" id="backToHotel">Back to Hotel</a>
+                        </div>
+                    </form>
+                </div>
+                </label>
+                <label>
+                    Check-in
+                    <input required type="date" name="checkin" />
+                </label>
+                <label>
+                    Check-out
+                    <input required type="date" name="checkout" />
+                </label>
+                <label>
+                    Guests
+                    <select name="guests">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                        <option>4</option>
+
+                    </select>
+                </label>
+            </div>
+            <div class="form-actions">
+                <button class="btn-primary" type="submit">Confirm Booking</button>
+                <a href="#" id="backToHotel">Back to Hotel</a>
+            </div>
+            </form>
+    </div>
+    <div id="bookingResult"></div>
+    </div>
+    </main>
+
+    </div>
+
+    <script src="api.js"></script>
+    <script>
+        function q(n) { return new URLSearchParams(location.search).get(n); }
+        const roomId = q('id');
+
+        if (!roomId) {
+            alert('No room selected!');
+            window.location.href = 'rooms.html';
+        }
+
+        document.getElementById('backToHotel').href = 'hotel.html?id=' + roomId;
+
+        document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing...';
+
+            const reservationData = {
+                roomId: parseInt(roomId),
+                clientName: data.get('clientName'),
+                startDate: new Date(data.get('checkin')).toISOString(),
+                endDate: new Date(data.get('checkout')).toISOString()
+            };
+
+            try {
+                await api.reserveRoom(reservationData);
+
+                document.getElementById('bookingResult').innerHTML = `
+                    <div style="padding:18px;background:#d1fae5;border-radius:12px;color:#065f46;">
+                      <strong>Booking Confirmed!</strong>
+                      <p>Thank you, ${reservationData.clientName}.</p>
+                      <p>Your room has been reserved from ${data.get('checkin')} to ${data.get('checkout')}.</p>
+                      <a href="rooms.html" class="btn-primary" style="display:inline-block;margin-top:10px;text-decoration:none;">Back to Rooms</a>
+                    </div>
+                `;
+                form.reset();
+                document.getElementById('booking-box').style.display = 'none';
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('bookingResult').innerHTML = `
+                    <div style="padding:18px;background:#fee2e2;border-radius:12px;color:#991b1b;">
+                      <strong>Booking Failed</strong>
+                      <p>${error.message}</p>
+                    </div>
+                `;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+
+
+</html>

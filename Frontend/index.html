@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amounra Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- ===== Login Popup Modal CSS (خـاص بمودال الـ Login) ===== -->
+  <!-- ===== Login Popup Modal CSS (خـاص بمودال الـ Login) ===== -->
+  <style>
+    body.no-scroll {
+      overflow: hidden;
+    }
+
+    .login-modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      justify-content: center;
+      /* ننزله من فوق شوية */
+      align-items: flex-start;
+      padding-top: 80px;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .login-modal-overlay.active {
+      display: flex;
+    }
+
+    .login-modal-container {
+      position: relative;
+      max-width: 950px;
+      width: 90%;
+      /* هنا بقى الانيميشن اللي بتنزل من فوق */
+      animation: loginSlideDown 0.5s ease-out;
+    }
+
+    .login-modal-box {
+      display: flex;
+      background: linear-gradient(135deg, #000000, #010049);
+      border-radius: 25px;
+      padding: 40px 60px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      color: #fff;
+      gap: 40px;
+    }
+
+    .login-modal-info,
+    .login-modal-form {
+      width: 50%;
+    }
+
+    .login-modal-info h2 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .login-modal-info p {
+      color: #dbeafe;
+      line-height: 1.6;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .login-modal-info ul {
+      list-style: none;
+      line-height: 2;
+      color: #e0f2fe;
+      font-size: 13px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .login-modal-form {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-modal-form h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .login-modal-form input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .login-modal-form button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #0078ff;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-modal-form button:hover {
+      background: #005fcc;
+    }
+
+    .login-modal-form .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .login-modal-form .social button {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 13px;
+    }
+
+    .login-modal-form .social button:hover {
+      background: #fff;
+      color: #1e40af;
+    }
+
+    .login-modal-form a {
+      display: block;
+      color: #bfdbfe;
+      text-decoration: none;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .login-modal-form a:hover {
+      text-decoration: underline;
+    }
+
+    .login-modal-back-home {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.3s;
+      border: 1px solid #cbd5e1;
+      font-size: 13px;
+    }
+
+    .login-modal-back-home:hover {
+      background: #fff;
+      color: #1e40af;
+    }
+
+    .login-modal-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: none;
+      background: #fff;
+      color: #000;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 900px) {
+      .login-modal-box {
+        flex-direction: column;
+        padding: 24px 18px;
+      }
+
+      .login-modal-info,
+      .login-modal-form {
+        width: 100%;
+      }
+
+      .login-modal-info {
+        text-align: center;
+      }
+    }
+
+    /* الأنيميشن نفسها */
+    @keyframes loginSlideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="block">
+      <div class="logo">AmunraHotel</div>
+      <nav id="navbar">
+
+        <a href="#">Home</a>
+        <a href="rooms.html">Hotels</a>
+        <a href="#Offers">Offers</a>
+        <a href="#about">About</a>
+        <a href="dashboard.html" class="admin-dashboard-link">Dashboard</a>
+
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="actions">
+
+        <div class="search-field-container">
+          <button class="icon search-icon" id="toggleSearchBtn">🔍</button>
+          <div class="search-input-wrap hidden" id="searchHeaderInput">
+            <input type="text" id="headerSearchInput" placeholder="Search by hotel name...">
+            <button class="close-search-btn" id="closeSearchInput">&times;</button>
+            <div class="search-results-dropdown hidden" id="searchResults"></div>
+          </div>
+        </div>
+
+        <div class="user-dropdown-container">
+          <button class="icon user-icon" id="userIcon">👤</button>
+
+          <div class="user-dropdown-menu " id="userMenu">
+            <a href="#" class="dropdown-item dashboard">
+              <div class="user-info">
+                <img src="img/khaled.png" alt="User Avatar" class="user-avatar">
+                <div>
+                  <span class="user-name">AmunraHotel</span>
+                  <span class="user-email">user.AmunraHotel@gmail.com</span>
+                </div>
+              </div>
+            </a>
+
+            <a href="#" class="dropdown-item" id="openManageModalLink"><i class="fas fa-cog"></i> Manage account</a>
+            <a href="my-bookings.html" class="dropdown-item"><i class="fas fa-book"></i> My Bookings</a>
+            <a href="index.html" class="dropdown-item sign-out"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+
+            <small class="secure-label">Secured by Amunra</small>
+          </div>
+        </div>
+
+        <!-- زرار Login بقى بيفتح المودال بدل ما يروح login.html -->
+        <button class="login-btn" id="openLoginModal">Login</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h5 class="subtitle">The Luxurious Hotel Experience</h5>
+      <h1>Discover Your Perfect<br>Getaway Destination</h1>
+      <p>
+        Unparalleled luxury and comfort across the world’s most exclusive
+        hotels and resorts. Start your journey today.
+      </p>
+
+      <form class="search-bar">
+        <label class="field-wrap">
+          <span class="field-label">🌍 Destination</span>
+          <div class="location-field">
+            <input type="text" placeholder="Type here" />
+          </div>
+        </label>
+
+        <label class="field-wrap">
+          <span class="field-label">📅 Check in</span>
+          <input type="date" placeholder="dd-mm-yyyy" />
+        </label>
+
+        <label class="field-wrap">
+          <span class="field-label">📅 Check out</span>
+          <input type="date" placeholder="dd-mm-yyyy" />
+        </label>
+
+        <label class="field-wrap">
+          <span class="field-label">👤 Guests</span>
+          <select>
+            <option>1 Guest</option>
+            <option selected>2 Guests</option>
+            <option>3 Guests</option>
+            <option>4 Guests</option>
+          </select>
+        </label>
+        <button type="submit" class="search-btn">🔍 Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Featured Hotels Section ===== -->
+  <section class="featured-new" id="Hotels">
+    <div class="featured-header">
+      <h2>Featured Hotels</h2>
+      <p>
+        color: #fff;
+        border-radius: 8px;
+        padding: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 13px;
+        }
+
+        .login-modal-form .social button:hover {
+        background: #fff;
+        color: #1e40af;
+        }
+
+        .login-modal-form a {
+        display: block;
+        color: #bfdbfe;
+        text-decoration: none;
+        font-size: 12px;
+        margin-top: 8px;
+        }
+
+        .login-modal-form a:hover {
+        text-decoration: underline;
+        }
+
+        .login-modal-back-home {
+        display: inline-block;
+        margin-top: 14px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid #cbd5e1;
+        font-size: 13px;
+        }
+
+        .login-modal-back-home:hover {
+        background: #fff;
+        color: #1e40af;
+        }
+
+        .login-modal-close {
+        position: absolute;
+        top: -14px;
+        right: -14px;
+        width: 32px;
+        height: 32px;
+        border-radius: 999px;
+        border: none;
+        background: #fff;
+        color: #000;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 900px) {
+        .login-modal-box {
+        flex-direction: column;
+        padding: 24px 18px;
+        }
+
+        .login-modal-info,
+        .login-modal-form {
+        width: 100%;
+        }
+
+        .login-modal-info {
+        text-align: center;
+        }
+        }
+
+        /* الأنيميشن نفسها */
+        @keyframes loginSlideDown {
+        0% {
+        opacity: 0;
+        transform: translateY(-40px);
+        }
+        100% {
+        opacity: 1;
+        transform: translateY(0);
+        }
+        }
+        </style>
+        </style>
+        </head>
+
+        <body>
+          <header>
+            <div class="block">
+              <div class="logo">AmunraHotel</div>
+              <nav id="navbar">
+
+                <a href="#">Home</a>
+                <a href="rooms.html">Hotels</a>
+                <a href="#Offers">Offers</a>
+                <a href="#about">About</a>
+                <a href="dashboard.html" class="admin-dashboard-link">Dashboard</a>
+
+              </nav>
+              <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="actions">
+
+                <div class="search-field-container">
+                  <button class="icon search-icon" id="toggleSearchBtn">🔍</button>
+                  <div class="search-input-wrap hidden" id="searchHeaderInput">
+                    <input type="text" id="headerSearchInput" placeholder="Search by hotel name...">
+                    <button class="close-search-btn" id="closeSearchInput">&times;</button>
+                    <div class="search-results-dropdown hidden" id="searchResults"></div>
+                  </div>
+                </div>
+
+                <div class="user-dropdown-container">
+                  <button class="icon user-icon" id="userIcon">👤</button>
+
+                  <div class="user-dropdown-menu " id="userMenu">
+                    <a href="#" class="dropdown-item dashboard">
+                      <div class="user-info">
+                        <img src="img/khaled.png" alt="User Avatar" class="user-avatar">
+                        <div>
+                          <span class="user-name">AmunraHotel</span>
+                          <span class="user-email">user.AmunraHotel@gmail.com</span>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="dropdown-item" id="openManageModalLink"><i class="fas fa-cog"></i> Manage
+                      account</a>
+                    <a href="my-bookings.html" class="dropdown-item"><i class="fas fa-book"></i> My Bookings</a>
+                    <a href="index.html" class="dropdown-item sign-out"><i class="fas fa-sign-out-alt"></i> Sign out</a>
+
+                    <small class="secure-label">Secured by Amunra</small>
+                  </div>
+                </div>
+
+                <!-- زرار Login بقى بيفتح المودال بدل ما يروح login.html -->
+                <button class="login-btn" id="openLoginModal">Login</button>
+              </div>
+            </div>
+          </header>
+
+          <section class="hero">
+            <div class="overlay"></div>
+            <div class="content">
+              <h5 class="subtitle">The Luxurious Hotel Experience</h5>
+              <h1>Discover Your Perfect<br>Getaway Destination</h1>
+              <p>
+                Unparalleled luxury and comfort across the world’s most exclusive
+                hotels and resorts. Start your journey today.
+              </p>
+
+              <form class="search-bar">
+                <label class="field-wrap">
+                  <span class="field-label">🌍 Destination</span>
+                  <div class="location-field">
+                    <input type="text" placeholder="Type here" />
+                  </div>
+                </label>
+
+                <label class="field-wrap">
+                  <span class="field-label">📅 Check in</span>
+                  <input type="date" placeholder="dd-mm-yyyy" />
+                </label>
+
+                <label class="field-wrap">
+                  <span class="field-label">📅 Check out</span>
+                  <input type="date" placeholder="dd-mm-yyyy" />
+                </label>
+
+                <label class="field-wrap">
+                  <span class="field-label">👤 Guests</span>
+                  <select>
+                    <option>1 Guest</option>
+                    <option selected>2 Guests</option>
+                    <option>3 Guests</option>
+                    <option>4 Guests</option>
+                  </select>
+                </label>
+                <button type="submit" class="search-btn">🔍 Search</button>
+              </form>
+            </div>
+          </section>
+
+          <!-- ===== Featured Hotels Section ===== -->
+          <section class="featured-new" id="Hotels">
+            <div class="featured-header">
+              <h2>Featured Hotels</h2>
+              <p>
+                Discover our handpicked selection of exceptional properties around the world, offering unparalleled
+                luxury and
+                unforgettable experiences.
+              </p>
+            </div>
+
+            <div class="featured-grid" id="featuredHotelsContainer">
+              <!-- Dynamic content will be loaded here -->
+              <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <p>Loading featured hotels...</p>
+              </div>
+            </div>
+
+
+            <!-- Add this hidden hotels container after the existing featured-grid -->
+            <div class="featured-grid hidden" id="additionalHotels">
+              <!-- Card 1 -->
+              <div class="card">
+                <div class="img-wrap">
+                  <img src="img/vojtech-bruzek-Yrxr3bsPdS0-unsplash 1.png" alt="">
+                  <span class="img-badge">Best Seller</span>
+                </div>
+                <div class="card-body">
+                  <h3>The Grand Resort</h3>
+                  <div class="card-meta">
+                    <span class="loc"><i class="pin"></i> Maldives</span>
+                    <span class="rating"><i class="star"></i> 4.9</span>
+                  </div>
+                  <div class="card-bottom">
+                    <div class="price">$450 <span>/night</span></div>
+                    <a href="hotel.html?slug=grand-resort" class="view">View Details</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="card">
+                <div class="img-wrap">
+                  <img src="img/visualsofdana-T5pL6ciEn-I-unsplash 1.png" alt="">
+                  <span class="img-badge alt">Exclusive</span>
+                </div>
+                <div class="card-body">
+                  <h3>The Regal Palace</h3>
+                  <div class="card-meta">
+                    <span class="loc"><i class="pin"></i> Santorini</span>
+                    <span class="rating"><i class="star"></i> 4.9</span>
+                  </div>
+                  <div class="card-bottom">
+                    <div class="price">$450 <span>/night</span></div>
+                    <a href="hotel.html?slug=regal-palace" class="view">View Details</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="card">
+                <div class="img-wrap">
+                  <img src="img/chastity-cortijo-M8iGdeTSOkg-unsplash 1.png" alt="">
+                  <span class="img-badge">Best Seller</span>
+                </div>
+                <div class="card-body">
+                  <h3>Velvet Nights Inn</h3>
+                  <div class="card-meta">
+                    <span class="loc"><i class="pin"></i> Dubai Marina</span>
+                    <span class="rating"><i class="star"></i> 4.9</span>
+                  </div>
+                  <div class="card-bottom">
+                    <div class="price">$450 <span>/night</span></div>
+                    <a href="hotel.html?slug=velvet-nights" class="view">View Details</a>
+                  </div>
+                </div>
+                <p>
+                  Take advantage of our limited-time offers and special packages to enhance your stay and create
+                  unforgettable
+                  memories.
+                </p>
+              </div>
+
+              <div class="offers-grid">
+                <div class="offer-card">
+                  <img src="img\heroImage.png" alt="">
+                  <div class="offer-content">
+                    <span class="discount">25% OFF</span>
+                    <h3>Summer Escape Package</h3>
+                    <p>Enjoy a complimentary night and daily breakfast.</p>
+                    <span class="expires">Expires Aug 31</span>
+                    <a href="#" class="offer-btn">View Offers →</a>
+                  </div>
+                </div>
+
+                <div class="offer-card">
+                  <img src="img/choctaw-country-blogs-january-1868931.jpg" alt="">
+                  <div class="offer-content">
+                    <span class="discount">30% OFF</span>
+                    <h3>Romantic Getaway</h3>
+                    <p>Special couples retreat including spa treatments.</p>
+                    <span class="expires">Expires Sep 10</span>
+                    <a href="#" class="offer-btn">View Offers →</a>
+                  </div>
+                </div>
+
+                <div class="offer-card">
+                  <img
+                    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop"
+                    alt="">
+                  <div class="offer-content">
+                    <span class="discount">20% OFF</span>
+                    <h3>Early Bird Special</h3>
+                    <p>Book 60 days in advance and save on all stays.</p>
+                    <span class="expires">Expires Aug 31</span>
+                    <a href="#" class="offer-btn">View Offers →</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Add this hidden offers container after the existing offers-grid -->
+              <div class="offers-grid hidden" id="additionalOffers">
+                <div class="offer-card">
+                  <img src="img/Group 5174.png" alt="">
+                  <div class="offer-content">
+                    <span class="discount">15% OFF</span>
+                    <h3>Family Package</h3>
+                    <p>Special family rates with kids eat free.</p>
+                    <span class="expires">Expires Sep 30</span>
+                    <a href="#" class="offer-btn">View Offers →</a>
+                  </div>
+                </div>
+                <!-- Add more offer cards as needed -->
+
+                <div class="offer-card">
+                  <img src="img/choctaw-country-blogs-january-1868931.jpg" alt="">
+                  <div class="offer-content">
+                    <span class="discount">30% OFF</span>
+                    <h3>Romantic Getaway</h3>
+                    <p>Special couples retreat including spa treatments.</p>
+                    <span class="expires">Expires Sep 10</span>
+                    <a href="#" class="offer-btn">View Offers →</a>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="view-offers-box">
+                <button id="viewMoreOffers">View All Offers</button>
+              </div>
+          </section>
+          <!-- ===== Guests Testimonials Section ===== -->
+          <section class="guests" id="about">
+            <div class="guests-header">
+              <h2>What Our Guests Say</h2>
+              <p>
+                Discover why discerning travelers choose AmounraHotel for their luxury accommodations around the world.
+              </p>
+            </div>
+
+            <div class="guests-grid">
+              <div class="guest-card">
+                <div class="guest-info">
+                  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="guest" />
+                  <div>
+                    <h4>Emma Rodriguez</h4>
+                    <span>Spain</span>
+                  </div>
+                </div>
+                <div class="rating">★★★★★</div>
+                <p>
+                  I’ve used many booking platforms before, but nothing compares to the personalized experience and
+                  attention to
+                  detail I had through AmounraHotel.
+                </p>
+              </div>
+
+              <div class="guest-card">
+                <div class="guest-info">
+                  <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="guest" />
+                  <div>
+                    <h4>James Carter</h4>
+                    <span>USA</span>
+                  </div>
+                </div>
+                <div class="rating">★★★★★</div>
+                <p>
+                  Truly world-class service! Booking was effortless and the stay exceeded all expectations. I can’t wait
+                  to
+                  visit again!
+                </p>
+              </div>
+
+              <div class="guest-card">
+                <div class="guest-info">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="guest" />
+                  <div>
+                    <h4>Maria Chen</h4>
+                    <span>Singapore</span>
+                  </div>
+                </div>
+                <div class="rating">★★★★★</div>
+                <p>
+                  The attention to detail, the luxurious feel, and the exceptional hospitality made this one of my best
+                  experiences ever!
+                </p>
+              </div>
+            </div>
+          </section>
+          <!-- ===== Newsletter Subscribe Section ===== -->
+          <section class="newsletter">
+            <div class="newsletter-box">
+              <h2>Stay Inspired</h2>
+              <p>
+                Join our newsletter and be the first to discover new destinations, exclusive offers, and travel
+                inspiration.
+              </p>
+              <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">Subscribe →</button>
+              </form>
+              <small>
+                By subscribing, you agree to our Privacy Policy and consent to receive updates.
+              </small>
+            </div>
+          </section>
+
+          <!-- ===== Footer Section ===== -->
+          <footer class="footer">
+            <div class="footer-container">
+              <!-- Left side -->
+              <div class="footer-about">
+                <h3 class="footer-logo">AmunraHotel</h3>
+                <p>
+                  However the world’s most extraordinary hotels to unique villas and private islands.
+                </p>
+                <div class="footer-socials">
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+              </div>
+
+              <!-- Company -->
+              <div class="footer-col">
+                <h4>COMPANY</h4>
+                <ul>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Press</a></li>
+                  <li><a href="#">Partners</a></li>
+                </ul>
+              </div>
+
+              <!-- Support -->
+              <div class="footer-col">
+                <h4>SUPPORT</h4>
+                <ul>
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Safety Information</a></li>
+                  <li><a href="#">Cancellation Options</a></li>
+                  <li><a href="#">Accessibility</a></li>
+                </ul>
+              </div>
+
+              <!-- Stay Updated -->
+              <div class="footer-col">
+                <h4>STAY UPDATED</h4>
+                <p>Subscribe to our newsletter for travel inspiration and special offers.</p>
+                <form class="footer-form">
+                  <input type="email" placeholder="Your email" required />
+                  <button type="submit">→</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="footer-bottom">
+              <p>© 2025 AmunraHotel. All rights reserved.</p>
+              <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Sitemap</a>
+              </div>
+            </div>
+          </footer>
+
+          <!-- ===== Login Modal (popup لما تدوسي على زرار Login) ===== -->
+          <div class="login-modal-overlay" id="loginModal">
+            <div class="login-modal-backdrop"></div>
+            <div class="login-modal-container">
+              <button class="login-modal-close" id="closeLoginModal">&times;</button>
+              <div class="login-modal-box">
+                <div class="login-modal-info">
+                  <h2>Welcome to AmunraHotel Login</h2>
+                  <p>Access your account to manage bookings, check reservations, and enjoy exclusive hotel services.</p>
+                  <ul>
+                    <li>🔒 Secure &amp; Reliable</li>
+                    <li>⚡ Fast Access</li>
+                    <li>🌐 Available Anytime, Anywhere</li>
+                  </ul>
+                </div>
+
+                <div class="login-modal-form">
+                  <h3>Welcome Back</h3>
+                  <input type="email" placeholder="Email Address" required />
+                  <input type="password" placeholder="Password" required />
+                  <button>Sign In</button>
+                  <a href="#">Forgot password?</a>
+
+                  <div class="social">
+                    <button>Google</button>
+                    <button>Facebook</button>
+                  </div>
+                  <a href="#">Don’t have an account? Sign Up</a>
+
+                  <a href="index.html" class="login-modal-back-home">← Back to Home</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ===== نهاية جزء الـ Login Modal ===== -->
+
+          <div class="account-modal-overlay hidden" id="manageAccountModal">
+            <div class="account-modal-box">
+              <button class="modal-close-btn" id="closeManageModal">&times;</button>
+
+              <div class="modal-content-grid">
+                <nav class="account-sidebar">
+                  <div class="sidebar-top-section">
+                    <h2>Account</h2>
+                    <p>Manage your account info.</p>
+                  </div>
+
+                  <div class="sidebar-links-group">
+                    <a href="#" class="sidebar-link active"><i class="fas fa-user-circle"></i> Profile</a>
+                    <a href="#" class="sidebar-link"><i class="fas fa-shield-alt"></i> Security</a>
+                  </div>
+
+                  <div class="sidebar-footer">
+                    <small>Secured by Amunra</small>
+                  </div>
+                </nav>
+
+                <div class="profile-details-section">
+                  <h3>Profile details</h3>
+
+                  <div class="profile-card-content">
+                    <div class="profile-section-block profile-header-content">
+                      <span class="section-label">Profile</span>
+                      <div class="profile-content">
+                        <div class="profile-avatar-display">
+                          <img src="img/khaled.png" alt="Profile Avatar" class="profile-avatar-sm">
+                          <span class="profile-name-sm">AmunraHotel</span>
+                        </div>
+                        <button class="btn-outline update-profile-btn-sm" id="openUpdateProfile">Update Profile</button>
+                      </div>
+                    </div>
+
+                    <div class="profile-section-block email-addresses-section">
+                      <span class="section-label">Email addresses</span>
+                      <div class="profile-content-column">
+                        <div class="email-item-full">
+                          <span class="email-address-full">user.AmunraHotel@gmail.com</span>
+                          <span class="email-tag primary">Primary</span>
+                        </div>
+                        <a href="#" class="add-link">+ Add email address</a>
+                      </div>
+                    </div>
+
+                    <div class="profile-section-block">
+                      <span class="section-label">Connected accounts</span>
+                      <div class="profile-content">
+                        <div class="connected-account-full">
+                          <i class="fab fa-google google-icon"></i>
+                          <span>Google · user.AmunraHotel@gmail.com</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="update-profile-modal-overlay hidden" id="updateProfileModal">
+              <div class="update-profile-modal-box">
+                <div class="modal-header-sm">
+                  <h3>Update Profile</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="avatar-upload-area">
+                    <img src="img/khaled.png" alt="Current Avatar" class="current-avatar">
+                    <div>
+                      <div class="upload-actions">
+                        <button class="btn-primary">Upload</button>
+                        <button class="btn-outline">Remove</button>
+                      </div>
+                      <p class="recommendation">Recommended size 1:1, up to 10MB.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer-sm">
+                  <button class="btn-outline" id="cancelUpdateProfile">Cancel</button>
+                  <button class="btn-primary">Save</button>
+
+                  function openLogin() {
+                  if (!loginModal) return;
+                  loginModal.classList.add('active');
+                  document.body.classList.add('no-scroll');
+                  }
+
+                  function closeLogin() {
+                  if (!loginModal) return;
+                  loginModal.classList.remove('active');
+                  document.body.classList.remove('no-scroll');
+                  }
+
+                  if (openLoginBtn) {
+                  openLoginBtn.addEventListener('click', openLogin);
+                  }
+
+                  if (closeLoginBtn) {
+                  closeLoginBtn.addEventListener('click', closeLogin);
+                  }
+
+                  if (loginModal) {
+                  loginModal.addEventListener('click', (e) => {
+                  if (e.target === loginModal || e.target.classList.contains('login-modal-backdrop')) {
+                  closeLogin();
+                  }
+                  });
+                  }
+                  </script>
+
+                  <script src="api.js"></script>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', async function () {
+                      const container = document.getElementById('featuredHotelsContainer');
+
+                      try {
+                        const rooms = await api.getAllRooms();
+
+                        if (!rooms || rooms.length === 0) {
+                          container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">No featured hotels available at the moment.</p>';
+                          return;
+                        }
+
+                        // Take first 4 rooms as featured
+                        const featuredRooms = rooms.slice(0, 4);
+
+                        container.innerHTML = featuredRooms.map(room => `
+                <div class="card">
+                    <div class="img-wrap">
+                        <img src="${room.roomPhotoUrl}" alt="Room ${room.roomNumber}" onerror="this.src='img/default-room.jpg'">
+                        <span class="img-badge">${room.isAvailable ? 'Available' : 'Booked'}</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>Room ${room.roomNumber} - ${room.roomType}</h3>
+                        <div class="card-meta">
+                            <span class="loc"><i class="pin"></i> Amunra Hotel</span>
+                            <span class="rating"><i class="star"></i> 4.9</span>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="price">$${room.price} <span>/night</span></div>
+                            <a href="hotel.html?id=${room.id}" class="view">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+                      } catch (error) {
+                        console.error('Error loading featured hotels:', error);
+                        container.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Unable to load featured hotels.</p>';
+                      }
+                    });
+
+                    // Handle search form submission
+                    const searchForm = document.querySelector('.hero .search-bar');
+                    if (searchForm) {
+                      searchForm.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        // Just redirect to rooms page for now, as search logic is there
+                        window.location.href = 'rooms.html';
+                      });
+                    }
+                  </script>
+                  <script src="main.js"></script>
+        </body>
+
+</html>

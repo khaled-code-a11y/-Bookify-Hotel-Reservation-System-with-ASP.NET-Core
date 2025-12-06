@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Dashboard - AmunraHotel</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="dashboard-body">
+
+    <aside class="admin-sidebar" id="desktopSidebar">
+        <div class="sidebar-header">
+            <div class="logo"> <a href="index.html">AmunraHotel</a> </div>
+        </div> 
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html?view=overview" class="sidebar-item active"><i class="fas fa-th-large"></i>
+                Dashboard</a>
+            <a href="dashboard.html?view=add-room" class="sidebar-item"><i class="fas fa-plus-circle"></i> Add Room</a>
+            <a href="dashboard.html?view=list-room" class="sidebar-item"><i class="fas fa-list-ul"></i> List Room</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main-content">
+
+        <nav class="mobile-dashboard-nav" id="mobileSidebarNav">
+            <a href="index.html" class="home-btn-mobile">Home</a>
+            <div class="sidebar-nav-mobile-wrap">
+                <a href="dashboard.html?view=overview" class="sidebar-item active"><i class="fas fa-th-large"></i>
+                    Dashboard</a>
+                <a href="dashboard.html?view=add-room" class="sidebar-item"><i class="fas fa-plus-circle"></i> Add
+                    Room</a>
+                <a href="dashboard.html?view=list-room" class="sidebar-item"><i class="fas fa-list-ul"></i> List
+                    Room</a>
+            </div>
+        </nav>
+
+        <header class="admin-header">
+            <div class="user-actions">
+                <div class="user-profile"></div>
+            </div>
+        </header>
+
+        <div class="admin-page-content" id="dashboardContent">
+            </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const contentDiv = document.getElementById('dashboardContent');
+            const urlParams = new URLSearchParams(window.location.search);
+            const view = urlParams.get('view') || 'overview';
+
+            // تحديث حالة النشاط للروابط في وضع الديسكتوب
+            const desktopSidebarItems = document.querySelectorAll('#desktopSidebar .sidebar-item');
+            desktopSidebarItems.forEach(item => item.classList.remove('active'));
+
+            // تحديث حالة النشاط للروابط في وضع الموبايل
+            const mobileSidebarItems = document.querySelectorAll('.mobile-dashboard-nav .sidebar-item');
+            mobileSidebarItems.forEach(item => item.classList.remove('active'));
+
+            let htmlContent = '';
+
+            // تحديث حالة النشاط للرابط الحالي في كلا شريطي التنقل
+            [...desktopSidebarItems, ...mobileSidebarItems].forEach(item => {
+                if (item.href.includes(`view=${view}`)) {
+                    item.classList.add('active');
+                }
+            });
+
+            // --- 2. توليد المحتوى الديناميكي ---
+            switch (view) {
+                case 'overview':
+                    htmlContent = `
+                        <h2>Dashboard</h2>
+                        <p class="dashboard-subtext">Monitor your room listings, track bookings and analyze revenue—all in one place. Stay updated with real-time insights to ensure smooth operations.</p>
+                        
+                        <div class="kpi-cards">
+                            <div class="kpi-card">
+                                <i class="fas fa-bed"></i>
+                                <div>Total Bookings</div>
+                                <div class="kpi-value">6</div>
+                            </div>
+                            <div class="kpi-card">
+                                <i class="fas fa-dollar-sign"></i>
+                                <div>Total Revenue</div>
+                                <div class="kpi-value">$2094</div>
+                            </div>
+                        </div>
+
+                        <h3>Recent Bookings</h3>
+                        <div class="admin-page-content-scroll">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Room Name</th>
+                                        <th>Total Amount</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Great Stack</td><td>Double Bed</td><td>$399</td><td><span class="status-badge completed">Completed</span></td></tr>
+                                    <tr><td>Dev Kumar</td><td>Double Bed</td><td>$399</td><td><span class="status-badge completed">Completed</span></td></tr>
+                                    <tr><td>Dev Kumar</td><td>Double Bed</td><td>$399</td><td><span class="status-badge pending">Pending</span></td></tr>
+                                    <tr><td>Great Stack</td><td>Single Bed</td><td>$299</td><td><span class="status-badge completed">Completed</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+
+                case 'add-room':
+                    htmlContent = `
+                        <h2>Add Room</h2>
+                        <p class="dashboard-subtext">Fill in the details carefully and accurate room details, pricing, and amenities, to enhance the user booking experience.</p>
+                        
+                        <form class="add-room-form">
+                            <h3 class="form-section-title">Images</h3>
+                            <div class="image-upload-area">
+                                <div class="upload-box"><i class="fas fa-upload"></i> Upload</div>
+                                <div class="upload-box active"><i class="fas fa-check-circle"></i> Uploaded</div>
+                                <div class="upload-box"><i class="fas fa-upload"></i> Upload</div>
+                                <div class="upload-box"><i class="fas fa-upload"></i> Upload</div>
+                            </div>
+
+                            <h3 class="form-section-title">Room Type</h3>
+                            <div class="form-group">
+                                <label for="roomType">Select Room Type</label>
+                                <select id="roomType">
+                                    <option>Single Bed</option>
+                                    <option>Double Bed</option>
+                                    <option>Suite</option>
+                                </select>
+                            </div>
+                            
+                            <h3 class="form-section-title">Price / night</h3>
+                            <div class="form-group">
+                                <input type="number" placeholder="0" class="price-input">
+                            </div>
+
+                            <h3 class="form-section-title">Amenities</h3>
+                            <div class="amenities-checkboxes">
+                                <label><input type="checkbox"> Free WiFi</label>
+                                <label><input type="checkbox" checked> Free Breakfast</label>
+                                <label><input type="checkbox"> Room Service</label>
+                                <label><input type="checkbox"> Mountain View</label>
+                                <label><input type="checkbox"> Pool Access</label>
+                            </div>
+
+                            <button type="submit" class="btn-add-room">Add Room</button>
+                        </form>
+                    `;
+                    break;
+
+                case 'list-room':
+                    htmlContent = `
+                        <h2>Room Listings</h2>
+                        <p class="dashboard-subtext">View, edit, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users.</p>
+                        
+                        <div class="admin-page-content-scroll">
+                            <table class="data-table listings-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Facility</th>
+                                        <th>Price / night</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Single Bed</td>
+                                        <td>Free WiFi, Room Service, Pool Access</td>
+                                        <td>199</td>
+                                        <td>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Double Bed</td>
+                                        <td>Free WiFi, Free Breakfast, Room Service</td>
+                                        <td>249</td>
+                                        <td>
+                                            <label class="toggle-switch">
+                                                <input type="checkbox">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+            }
+
+            contentDiv.innerHTML = htmlContent;
+        });
+    </script>
+</body>
+
+</html>

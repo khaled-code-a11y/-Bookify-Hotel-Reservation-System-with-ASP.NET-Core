@@ -1,0 +1,3277 @@
+/* ===== General ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+header .block {
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+nav {
+
+  display: flex;
+
+  gap: 25px;
+  position: relative;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  position: relative;
+}
+
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #007e9a;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+
+
+nav a:hover {
+  color: #007e9a;
+  font-size: 15px;
+}
+
+
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-icon,
+.user-icon {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: black;
+  border: 1px solid #fff;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: white;
+  color: black;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .block {
+    display: flex;
+    width: 100%;
+    left: 0;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+  }
+
+  .logo {
+    font-size: 15px;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    z-index: 100;
+
+  }
+
+
+
+  nav {
+    position: fixed;
+    top: -10px;
+
+    right: -100%;
+    width: 60%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.842);
+    backdrop-filter: blur(100px);
+    flex-direction: column;
+    align-items: center;
+
+
+    transition: 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.177);
+  }
+
+  nav a {
+
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    margin: 0;
+  }
+
+  nav a:first-child {
+    margin-top: -300px;
+  }
+
+  nav.active {
+    right: 0;
+  }
+
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  .actions button {
+
+    font-size: 12px;
+
+  }
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 80px;
+  background-image: url("img/heroImage.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  text-align: left;
+}
+
+.subtitle {
+  background: #0078ff;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  color: #ddd;
+  margin-bottom: 35px;
+  max-width: 450px;
+}
+
+/* ===== Search Bar MODIFIED ===== */
+.search-bar {
+  display: flex;
+  align-items: flex-start;
+  /* تغيير لمواءمة العناوين فوق الحقول */
+  gap: 20px;
+  /* زيادة المسافة بين الحقول */
+  background: white;
+  padding: 15px 25px;
+  /* زيادة Padding */
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+}
+
+/* لكل حقل إدخال (Input, Select) */
+.field-wrap {
+  display: block;
+  position: relative;
+}
+
+.field-label {
+  display: block;
+  font-size: 14px;
+  /* حجم العنوان */
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 5px;
+  /* المسافة بين العنوان والحقل */
+}
+
+/* حقل Destination */
+.location-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* لا نحتاج Border هنا لأننا سنضيفه على الـ input مباشرة */
+}
+
+.location-field input {
+  /* حذف الـ padding-left 35px */
+  width: 180px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  height: 45px;
+  padding: 0 12px;
+  outline: none;
+  color: #333;
+  font-size: 14px;
+}
+
+/* تطبيق التنسيق على باقي الحقول */
+.search-bar input[type="date"],
+.search-bar select {
+  height: 45px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  color: #333;
+  font-size: 14px;
+  padding: 0 12px;
+  width: 150px;
+}
+
+/* زر البحث */
+.search-btn {
+  background: #0078ff;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0 25px;
+  height: 45px;
+  /* مساواة ارتفاعه بارتفاع الحقول */
+  align-self: flex-end;
+  /* لجعله في الأسفل بجانب الحقول */
+  border-radius: 8px;
+}
+
+.search-btn:hover {
+  background: #005fcc;
+}
+
+/* تعديل الـ Responsive ليتماشى مع التغيير الجديد */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+    /* لتمتد العناصر على كامل العرض */
+    width: 90%;
+    gap: 15px;
+    /* مسافة بين العناصر العمودية */
+  }
+
+  /* لجعل الحقول تمتد على كامل العرض في شاشات الموبايل */
+  .location-field input,
+  .search-bar input[type="date"],
+  .search-bar select {
+    width: 100% !important;
+  }
+
+  .search-btn {
+    align-self: stretch;
+    /* ليمتد الزر على كامل العرض */
+  }
+}
+
+/* ===== Featured Hotels ===== */
+.featured-new {
+  background-color: #E4EEF8;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.featured-header {
+  max-width: 600px;
+  margin-bottom: 50px;
+}
+
+.featured-header h2 {
+  font-size: 38px;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.featured-header p {
+  font-size: 16px;
+  color: #4b5563;
+
+}
+
+/* Cards section */
+.featured-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 0 40px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 250px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.img-wrap {
+  position: relative;
+}
+
+.img-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #111827;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.img-badge.alt {
+  background: #334155;
+}
+
+.img-badge.new {
+  background: #059669;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 12px 14px 16px;
+  text-align: left;
+}
+
+.card h3 {
+  color: #1e293b;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* Meta info */
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0 10px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.card-meta .loc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pin::before {
+  content: "📍";
+  color: #3b82f6;
+}
+
+.star::before {
+  content: "★";
+  color: #f59e0b;
+}
+
+/* Price + link */
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.price span {
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.view {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.view:hover {
+  color: #0f172a;
+}
+
+/* View All Box */
+.view-all-box {
+  margin-top: 60px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.show {
+  margin-top: 30px;
+  display: flex;
+
+}
+
+
+
+.view-all-box button {
+  background: #fff;
+  border: 2px solid #0078ff;
+  color: #0078ff;
+  padding: 10px 28px;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-all-box button:hover {
+  background: #0078ff;
+  color: #fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  header {
+    padding: 0 25px;
+  }
+
+  .hero {
+    
+    padding-left: 25px;
+  }
+
+  h1 {
+    
+    font-size: 34px;
+  }
+  h5{
+    margin-top: 70px;
+  }
+
+  .search-bar {
+    flex-wrap: wrap;
+  }
+
+  .featured-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}
+
+/* ===== Exclusive Offers Section ===== */
+.exclusive-offers {
+  background: #F8FAFC;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.offers-header {
+
+  max-width: 550px;
+  text-align: left;
+  margin-bottom: 60px;
+  align-items: center;
+  text-align: center;
+
+
+}
+
+
+.offers-header h2 {
+  font-size: 38px;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.offers-header p {
+  padding: 0 20px;
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.offers-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  padding: 0 40px;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.offer-card {
+  position: relative;
+  flex: 1;
+  min-width: 400px;
+  height: 380px;
+  border-radius: 15px;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: #000;
+}
+
+.offer-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.offer-card:hover img {
+  transform: scale(1.05);
+  opacity: 0.85;
+}
+
+.offer-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 20%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.discount {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #0ea5e9;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.offer-content h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.offer-content p {
+  font-size: 14px;
+  color: #e2e8f0;
+  margin-bottom: 5px;
+}
+
+.expires {
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+}
+
+.offer-btn {
+  color: #0ea5e9;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.offer-btn:hover {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+.view-offers-box {
+  margin-top: 50px;
+}
+
+.view-offers-box button {
+  background: #fff;
+  border: 2px solid #0ea5e9;
+  color: #0ea5e9;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.view-offers-box button:hover {
+  background: #0ea5e9;
+  color: #fff;
+}
+
+/* ===== Guests Testimonials ===== */
+.guests {
+  background: #E4EEF8;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.guests-header {
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.guests-header h2 {
+  font-size: 38px;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.guests-header p {
+  font-size: 16px;
+  color: #4b5563;
+}
+
+.guests-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0 40px;
+}
+
+.guest-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  width: 320px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.guest-card:hover {
+  transform: translateY(-5px);
+}
+
+.guest-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.guest-info img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.guest-info h4 {
+  font-size: 17px;
+  color: #0f172a;
+}
+
+.guest-info span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.rating {
+  color: #fbbf24;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.guest-card p {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .guests-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .guest-card {
+    width: 90%;
+  }
+}
+
+/* ===== Newsletter Subscribe Section ===== */
+.newsletter {
+  background: #F8FAFC;
+  color: #f9fafb;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newsletter-box {
+  background: #1e293b;
+  padding: 80px 100px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 900px;
+  /* عريض أكتر */
+  width: 90%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.newsletter-box h2 {
+  font-size: 42px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.newsletter-box p {
+  font-size: 16px;
+  color: #cbd5e1;
+  margin-bottom: 35px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subscribe-form {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.subscribe-form input {
+  padding: 12px 18px;
+  width: 320px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  color: #111;
+}
+
+.subscribe-form button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.newsletter-box small {
+  display: block;
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 10px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newsletter-box {
+    padding: 50px 30px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input,
+  .subscribe-form button {
+    width: 100%;
+  }
+}
+
+/* ===== Footer Section ===== */
+.footer {
+  background: #f8fafc;
+  color: #0f172a;
+  padding: 80px 100px 40px;
+  font-size: 14px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-logo {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer-about p {
+  color: #475569;
+  max-width: 250px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-socials a {
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.footer-socials img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+.footer-socials img:hover {
+  opacity: 1;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #0f172a;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #475569;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #0078ff;
+}
+
+.footer-col p {
+  color: #475569;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Stay Updated Form */
+.footer-form {
+  display: flex;
+  align-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 220px;
+}
+
+.footer-form input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #111;
+}
+
+.footer-form button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer-form button:hover {
+  background: #0078ff;
+}
+
+/* Bottom line */
+.footer-bottom p {
+  color: #343131bd;
+}
+
+.footer-bottom {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #475569;
+}
+
+.footer-links a {
+  color: #475569;
+  text-decoration: none;
+  margin-left: 15px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #0078ff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    padding: 60px 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* ===== Enhanced Responsive Fixes ===== */
+
+/* للأجهزة التابلت */
+@media (max-width: 992px) {
+  .hero {
+    padding-left: 40px;
+    text-align: center;
+  }
+
+  .content {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .featured-grid,
+  .offers-grid,
+  .guests-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .offer-card {
+    min-width: 300px;
+    height: 300px;
+  }
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .featured-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card,
+  .offer-card,
+  .guest-card {
+    width: 90%;
+    min-width: unset;
+  }
+
+  .offers-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .newsletter-box {
+    padding: 50px 25px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* موبايل صغير جدًا */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .search-bar input,
+  .search-bar select {
+    width: 100%;
+  }
+
+  .featured-header h2,
+  .offers-header h2,
+  .guests-header h2 {
+    font-size: 28px;
+  }
+
+  .offer-card {
+    height: 260px;
+  }
+
+  .newsletter-box h2 {
+    font-size: 32px;
+  }
+}
+
+
+/* ...existing code... */
+
+/* Rooms / Hotel detail styles */
+.page-rooms {
+  background-color: #ffffff
+}
+
+.rooms-list .room-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.rooms-list .room-media img {
+  width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.rooms-list .room-info {
+  flex: 1;
+  color: #111;
+}
+
+.room-title {
+  font-size: 20px;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.room-sub {
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.room-desc {
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.room-meta .amenity {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #111;
+  padding: 6px 10px;
+  margin-right: 8px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.room-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.room-price {
+  font-weight: 800;
+  font-size: 18px;
+  color: #111;
+}
+
+.btn-primary {
+  background: #0078ff;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #111;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-right: 8px;
+  text-decoration: none;
+}
+
+/* responsive */
+@media (max-width:900px) {
+  .rooms-list .room-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .rooms-list .room-media img {
+    width: 90%;
+    height: 200px;
+  }
+
+  .room-bottom {
+    justify-content: center;
+  }
+}
+
+/* hamburger small adjustments if not present in main CSS */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 3px;
+  margin: 5px 0;
+  background: #111;
+  transition: 0.3s;
+}
+
+@media (max-width:768px) {
+  .hamburger {
+    display: block;
+    z-index: 1000;
+    position: fixed;
+    right: 18px;
+    top: 18px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70px;
+    gap: 0;
+    transition: 0.25s;
+    z-index: 999;
+    overflow: auto;
+  }
+
+  nav.active {
+    right: 0;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 18px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    color: #111;
+    display: block;
+  }
+
+  .actions {
+    display: none;
+  }
+}
+
+/* Show More button style */
+.view-allRooms-box {
+  display: inline-block;
+  background: #1d4ed8;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.16);
+}
+
+.view-allRooms-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.18);
+}
+
+.view-allRooms-box[aria-expanded="true"] {
+  background: #0b63d6;
+}
+
+/* hidden/show helpers */
+.hidden_rooms {
+  display: none !important;
+}
+
+.show_rooms {
+  display: block !important;
+}
+
+/* Ensure additional room cards use same room-item style */
+#additionalRooms .room-item {
+  margin-top: 18px;
+}
+
+/* fade-in animation */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#additionalRooms.show_rooms .room-item {
+  animation: fadeSlideUp .28s ease both;
+  animation-delay: .05s;
+}
+
+/* responsive */
+@media (max-width:900px) {
+  #additionalRooms .room-item {
+    margin-top: 16px;
+  }
+}
+
+.page-hotel {
+  background-color: #ffffff;
+}
+
+
+
+/* ===== Booking Page Styles (booking.html) ===== */
+
+/* Base container for the booking page */
+
+.page-booking {
+  min-height: 100vh;
+  background-color: #aacaee;
+}
+
+.booking-page-container {
+  max-width: 900px;
+
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #0f172a;
+  /* Ensure text is dark on a light background */
+}
+
+
+/* Header style for the main page title */
+.booking-page-container h2 {
+  margin-top: 70px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* The box containing the form */
+#booking-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Styling for all form elements (input/select) */
+#bookingForm label {
+  display: block;
+  font-size: 14px;
+  color: #475569;
+  font-weight: 500;
+  margin-bottom: 15px;
+  /* Spacing between labels */
+}
+
+#bookingForm input[type="date"],
+#bookingForm select {
+  display: block;
+  width: 100%;
+  height: 45px;
+  padding: 0 12px;
+  margin-top: 5px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  color: #333;
+  transition: border-color 0.3s;
+}
+
+#bookingForm input:focus,
+#bookingForm select:focus {
+  border-color: #0078ff;
+}
+
+/* Grouping inputs */
+.form-dates-guests-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-dates-guests-group label {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 0;
+  /* Remove bottom margin here since they are in a flex container */
+}
+
+/* Button and link container */
+.form-actions {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Back link */
+#backToHotel {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+#backToHotel:hover {
+  color: #0078ff;
+}
+
+/* Booking confirmation result box */
+#bookingResult>div {
+  padding: 20px;
+  background: #ecfdf5;
+  /* Light green/blue for success */
+  border: 1px solid #10b981;
+  border-radius: 12px;
+  margin-top: 20px;
+  color: #065f46;
+  line-height: 1.6;
+}
+
+#bookingResult strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+#bookingResult p {
+  color: #065f46;
+  /* Override general p tag color */
+  margin-bottom: 4px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .form-dates-guests-group {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-dates-guests-group label {
+    min-width: 100%;
+    margin-bottom: 15px;
+  }
+}
+
+
+/* ===== User Dropdown (Replacement for User Icon) ===== */
+.user-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* إخفاء أيقونة المستخدم وزر البحث وزر Login عندما يفتح الهامبرغر في وضع الموبايل */
+@media (max-width: 768px) {
+  header .block .actions {
+    display: flex;
+    /* لجعلها تظهر على اليمين فوق باقي العناصر */
+  }
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  top: 60px;
+  /* المسافة تحت الأيقونة */
+  right: 0;
+  width: 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 100;
+  color: #111;
+  padding: 8px 0;
+  /* أضف هذا الـ CSS لإخفائه مبدئياً */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.user-dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-dropdown-menu .dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.user-dropdown-menu .dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.user-dropdown-menu .dropdown-item i {
+  margin-right: 10px;
+  color: #64748b;
+  width: 18px;
+  /* لتنسيق الأيقونات */
+  text-align: center;
+}
+
+/* User Info Section */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+}
+
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Sign out item */
+.dropdown-item.sign-out {
+  color: #ef4444;
+}
+
+.dropdown-item.sign-out i {
+  color: #ef4444;
+}
+
+.secure-label {
+  display: block;
+  font-size: 10px;
+  color: #94a3b8;
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+
+
+/* ===== Manage Account Modal Styles (manage-account.html) - FINAL MATCH ===== */
+
+/* ===== Manage Account Modal Styles (manage-account.html) - FINAL MATCH ===== */
+
+/* Overlay and Main Modal Box */
+.account-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* --- تم إرجاع الظل الرمادي الشفاف هنا --- */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* -------------------------------------- */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.account-modal-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 900px;
+  height: 550px;
+  overflow: hidden;
+  color: #111;
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button (X) */
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #94a3b8;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+  color: #333;
+}
+
+/* Content Layout (Sidebar + Details) */
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  flex-grow: 1;
+  height: 100%;
+}
+
+/* Sidebar Navigation (Column 1) */
+.account-sidebar {
+  grid-column: 1 / 2;
+  padding: 0;
+  background: #f7f7f7;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar Top Section (Account Title) */
+.sidebar-top-section {
+  padding: 30px 20px 0;
+}
+
+.sidebar-top-section h2 {
+  font-size: 20px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.sidebar-top-section p {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+/* Navigation Links Container */
+.sidebar-links-group {
+  padding: 20px 15px 15px 15px;
+  flex-grow: 1;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 500;
+}
+
+.sidebar-link i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.sidebar-link:hover {
+  background: #e5e7eb;
+  color: #0f172a;
+}
+
+.sidebar-link.active {
+  background: #fff;
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-link.active i {
+  color: #0078ff;
+}
+
+/* Footer Section */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 15px 0 10px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Profile Details Section (Column 2) */
+.profile-details-section {
+  grid-column: 2 / 3;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.profile-details-section h3 {
+  font-size: 22px;
+  color: #0f172a;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* General Section Styling */
+.profile-section-block {
+  padding: 20px 0;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-section-block:last-child {
+  border-bottom: none;
+}
+
+.section-label {
+  font-size: 14px;
+  color: #4b5563;
+  width: 150px;
+  flex-shrink: 0;
+}
+
+/* Profile Header Content (Avatar + Name + Button) */
+.profile-header-content {
+  padding: 15px 0 20px;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.profile-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-avatar-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.profile-avatar-sm {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name-sm {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.update-profile-btn-sm {
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+/* Email and Connected Accounts */
+.email-address-full {
+  color: #0f172a;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.add-link {
+  display: block;
+  margin-top: 10px;
+  color: #0078ff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.connected-account-full {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.google-icon {
+  font-size: 18px;
+  color: #4b5563;
+}
+
+/* ===== Update Profile Modal (Inner Modal) Styles ===== */
+
+.update-profile-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.update-profile-modal-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 25px;
+  text-align: left;
+}
+
+.modal-header-sm {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.modal-header-sm h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.avatar-upload-area {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  border: none;
+}
+
+.current-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.upload-actions {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+.upload-actions .btn-primary {
+  background: transparent;
+  border: none;
+  color: #0078ff;
+  font-weight: 500;
+  padding: 6px 15px;
+}
+
+.upload-actions .btn-outline {
+  border: none;
+  color: #ef4444;
+  font-weight: 500;
+  padding: 6px 15px;
+}
+
+.recommendation {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.modal-footer-sm {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid #f3f4f6;
+  margin-top: 15px;
+}
+
+.modal-footer-sm .btn-primary,
+.modal-footer-sm .btn-outline {
+  font-size: 14px;
+  padding: 8px 18px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.modal-footer-sm .btn-outline {
+  background: #fff;
+  color: #111;
+  border: 1px solid #ccc;
+}
+
+.modal-footer-sm .btn-primary {
+  background: #0078ff;
+  border: none;
+  color: #fff;
+}
+
+/* Responsive adjustments for account modal */
+@media (max-width: 768px) {
+
+  /* 1. ضبط حجم الـ Modal الرئيسي */
+  .account-modal-box {
+    width: 95%;
+    max-width: 95%;
+    height: 90vh;
+    /* تحديد ارتفاع مناسب */
+  }
+
+  /* 2. تحويل الـ Grid إلى صف عمودي واحد */
+  .modal-content-grid {
+    grid-template-columns: 1fr;
+    /* عمود واحد فقط */
+    grid-template-rows: auto 1fr;
+    /* الشريط الجانبي في الصف الأول ثم المحتوى */
+    overflow-y: hidden;
+    /* منع التمرير الرأسي الرئيسي */
+  }
+
+  /* 3. الشريط الجانبي (Sidebar) */
+  .account-sidebar {
+    /* تحويله إلى صف أفقي قابل للتمرير */
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    flex-direction: column;
+    /* يبقى عموديًا لكن يتم تعديل محتواه */
+    height: auto;
+    padding: 10px;
+  }
+
+  /* إخفاء Header الـ Account الأساسي في الشريط الجانبي */
+  .sidebar-top-section,
+  .sidebar-footer {
+    display: none;
+  }
+
+  /* عرض الروابط في صف أفقي قابل للتمرير */
+  .sidebar-links-group {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    /* تمكين التمرير الأفقي للروابط */
+    white-space: nowrap;
+    padding: 5px 0;
+  }
+
+  .sidebar-link {
+    flex-shrink: 0;
+    /* منع الروابط من الانكماش */
+    margin-right: 8px;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  /* 4. قسم التفاصيل (Profile Details) */
+  .profile-details-section {
+    grid-column: 1 / -1;
+    padding: 20px;
+    /* تقليل الـ padding */
+    overflow-y: auto;
+    /* السماح بالتمرير داخل المحتوى */
+  }
+
+  /* 5. ضبط الأقسام الداخلية (Labels فوق الحقول) */
+  .profile-section-block {
+    flex-direction: column;
+    /* تحويل الأقسام إلى عمودية */
+    align-items: flex-start;
+    padding: 15px 0;
+  }
+
+  .section-label {
+    width: 100%;
+    /* جعل الملصق يأخذ العرض كاملاً */
+    margin-bottom: 5px;
+  }
+
+  .profile-content,
+  .profile-content-column {
+    width: 100%;
+    /* في قسم Profile Header، نجعل الأزرار تحت الصورة */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .profile-avatar-display {
+    margin-right: auto;
+    /* إبقاء الصورة والاسم على اليسار */
+  }
+
+  .update-profile-btn-sm {
+    margin-left: 0;
+    /* إلغاء الدفع إلى اليمين */
+    width: 100%;
+    /* جعل الزر يأخذ عرض الشاشة */
+    text-align: center;
+  }
+}
+
+/* للموبايل الصغير جداً */
+@media (max-width: 480px) {
+  .profile-details-section h3 {
+    font-size: 20px;
+  }
+
+  .profile-section-block {
+    padding: 10px 0;
+  }
+}
+
+
+
+
+
+
+/* ===== My Bookings Page Styles (my-bookings.html) ===== */
+.bookings-page-main {
+
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  color: #111;
+}
+
+.bookings-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.bookings-header-text h1 {
+  margin-top: 70px;
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.bookings-header-text p {
+  color: #64748b;
+  font-size: 15px;
+  margin-bottom: 40px;
+  max-width: none;
+}
+
+.bookings-list-titles {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr 1fr;
+  gap: 20px;
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 600;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 20px;
+}
+
+/* Booking Item Card */
+.booking-item {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr 1fr;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.booking-hotel-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.booking-img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.hotel-details-text h4 {
+  font-size: 16px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.hotel-details-text p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.hotel-details-text i {
+  font-size: 11px;
+  margin-right: 5px;
+}
+
+.hotel-total {
+  font-weight: 600;
+  color: #0f172a !important;
+}
+
+
+/* Dates Section */
+.booking-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.check-info span {
+  font-weight: 600;
+  margin-right: 5px;
+  color: #4b5563;
+}
+
+/* Payment Status */
+.booking-payment-status {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.status-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status-label i {
+  font-size: 8px;
+  margin-right: 5px;
+}
+
+.unpaid-status .status-label {
+  color: #ef4444;
+  /* Red for Unpaid */
+}
+
+.unpaid-status i {
+  color: #ef4444;
+}
+
+.paid-status .status-label {
+  color: #10b981;
+  /* Green for Paid */
+}
+
+.paid-status i {
+  color: #10b981;
+}
+
+.btn-pay-now {
+  background: #0078ff;
+  color: #fff;
+  padding: 6px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-pay-now:hover {
+  background: #005fcc;
+}
+
+
+
+
+
+
+
+/* ===== Payment Page Styles (payment.html) ===== */
+.payment-body {
+  background: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #111;
+  overflow-y: auto;
+}
+
+.payment-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.payment-back-btn {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.payment-test-mode {
+  background: #fcd34d;
+  color: #333;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-block;
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+
+.payment-summary {
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 20px;
+}
+
+.payment-summary h1 {
+  font-size: 24px;
+  color: #0f172a;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.payment-price {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 5px;
+}
+
+.payment-form h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* Payment Methods */
+.payment-methods-group {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.payment-option:last-child {
+  border-bottom: none;
+}
+
+.payment-option input[type="radio"] {
+  margin-right: 15px;
+  /* Hide default radio button and use custom styling if needed */
+}
+
+.payment-option .option-label {
+  flex-grow: 1;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+.card-logos img {
+  height: 18px;
+  margin-left: 5px;
+}
+
+.cash-app-option i {
+  color: #10b981;
+  margin-right: 5px;
+}
+
+/* Security and Save */
+/* Security and Save - التنسيق المعدل للـ Checkbox */
+.security-save {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  /* لترتيب Checkbox والنص */
+  align-items: flex-start;
+  /* للمحاذاة الرأسية للنص */
+  cursor: pointer;
+}
+
+.security-save input[type="checkbox"] {
+  margin-top: 2px;
+  margin-right: 15px;
+  /* المسافة بين Checkbox والنص */
+  width: 18px;
+  /* حجم Checkbox */
+  height: 18px;
+  flex-shrink: 0;
+  /* لمنع Checkbox من الانكماش */
+}
+
+/* تنسيقات النص داخل الحاوية */
+.security-save p {
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 0;
+  /* إلغاء أي margin علوي غير مرغوب فيه */
+}
+
+.security-save small {
+  display: block;
+  font-size: 13px;
+  color: #0078ff;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+/* Pay Button */
+.btn-pay {
+  width: 100%;
+  background: #0078ff;
+  color: #fff;
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-pay:hover {
+  background: #005fcc;
+}
+
+/* Powered by Stripe */
+.powered-by {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.powered-by small {
+  display: block;
+  font-size: 10px;
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
+
+.legal-links a {
+  font-size: 11px;
+  color: #94a3b8;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+
+/* تنسيقات رسالة الخطأ */
+.validation-error {
+  color: #ef4444;
+  /* لون أحمر واضح للخطأ */
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: -15px;
+  /* رفع الرسالة قليلاً فوق الزر */
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* تأكد من أن كلاس الإخفاء موجود */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive adjustments for My Bookings */
+@media (max-width: 850px) {
+
+  .bookings-list-titles,
+  .booking-item {
+    grid-template-columns: 1fr;
+    /* تحويل إلى صف عمودي واحد */
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .booking-hotel-info {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .booking-img {
+    width: 100%;
+    height: 120px;
+  }
+
+  .booking-dates {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .booking-payment-status {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+
+
+
+
+
+/* ===== Admin Dashboard Styles (dashboard.html) ===== */
+
+.sidebar-header a{
+    text-decoration: none;
+    color: #111;
+}
+
+.dashboard-body {
+    background: #f8fafc;
+    display: flex;
+    min-height: 100vh;
+    padding-top: 0;
+    color: #111;
+}
+
+.back-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #1100ff;
+    font-weight: bold;
+    font-size: 14px;
+
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #c6d0d0;
+    transition: color 0.3s;
+}
+
+/* 🛑 التعديل رقم 1: إخفاء شريط الموبايل افتراضياً في الديسكتوب */
+.mobile-dashboard-nav {
+    display: none;
+}
+
+/* Sidebar Styling */
+.admin-sidebar {
+    width: 250px;
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    padding: 20px 0;
+    flex-shrink: 0;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.sidebar-header .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    padding: 0 20px 20px;
+}
+
+.sidebar-nav {
+    display: block;
+    padding: 10px 15px;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 15px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-item i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-item:hover {
+    background: #f3f4f6;
+    color: #0f172a;
+}
+
+.sidebar-item.active {
+    background: #e0f2fe;
+    color: #0078ff;
+    font-weight: 600;
+}
+
+.sidebar-item.active i {
+    color: #0078ff;
+}
+
+/* Main Content Area */
+.admin-main-content {
+    flex-grow: 1;
+    padding: 20px 30px;
+    overflow-y: auto;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-page-content h2 {
+    font-size: 30px;
+    color: #0f172a;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.dashboard-subtext {
+    font-size: 15px;
+    color: #64748b;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
+
+/* KPI Cards (Total Bookings/Revenue) */
+.kpi-cards {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.kpi-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 220px;
+    text-align: center;
+    border-left: 5px solid #0078ff;
+}
+
+.kpi-card i {
+    font-size: 24px;
+    color: #0078ff;
+    margin-bottom: 10px;
+}
+
+.kpi-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 5px;
+}
+
+/* Data Table Styling */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.data-table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-badge.completed {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.status-badge.pending {
+    background: #fffbe6;
+    color: #f59e0b;
+}
+
+/* Add Room Form */
+.add-room-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+}
+
+.form-section-title {
+    font-size: 18px;
+    color: #0f172a;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.image-upload-area {
+    display: flex;
+    gap: 15px;
+}
+
+.upload-box {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.upload-box i {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #0078ff;
+}
+
+.upload-box.active {
+    border-color: #10b981;
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.price-input {
+    max-width: 150px;
+}
+
+.amenities-checkboxes label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.amenities-checkboxes input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.btn-add-room {
+    background: #0078ff;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* List Room - Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 25px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3.5px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #0078ff;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+
+/* ===== Responsive Adjustments for Dashboard (Mobile/Tablet) - FINAL FIXES APPLIED ===== */
+
+@media (max-width: 992px) {
+
+  
+    /* -------------------------------------- */
+    /* 1. هيكلة الصفحة */
+    /* -------------------------------------- */
+
+    /* بنخلي الصفحة عمودية */
+    .dashboard-body {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    /* 🛑 إخفاء شريط الديسكتوب */
+    .admin-sidebar {
+        display: none !important;
+    }
+
+    /* 🛑 إخفاء الهيدر (غالباً فارغ في الموبايل) */
+    .admin-header {
+        display: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    
+
+    /* -------------------------------------- */
+    /* 2. شريط التنقل للموبايل (Mobile Nav) */
+    /* -------------------------------------- */
+
+    /* 🛑 إظهار وتثبيت شريط الموبايل (تم إزالة خاصية margin-top: 200px) */
+    .mobile-dashboard-nav {
+        display: flex !important; /* ضمان الإظهار */
+
+        width: 100%;
+        height: 50px; /* ضمان ارتفاع مرئي */
+        
+        padding:30px 15px;
+        background: #fff;
+        border-bottom: 1px solid #e5e7eb;
+        align-items: center; /* مهم جداً لتوسيط العناصر عمودياً */
+        text-align: center;
+        gap: 50px; /* تقليل الـ gap */
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999; /* رفع Z-index لضمان ظهوره فوق المحتوى */
+    }
+    /* المحتوى الرئيسي لا يلتصق بالأعلى */
+    .admin-main-content {
+        padding-top: 65px; 
+    padding-left: 15px;
+    padding-right: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    }
+
+    .home-btn-mobile {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 7px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.2); /* خلفية فاتحة شفافة */
+        color: #fff; /* النص أبيض */
+        flex-shrink: 0;
+        text-decoration: none;
+    }
+    
+    /* 🛑 إزالة أي margin قد تسبب دفع الشريط (MobileSidebarNav هو الـ ID الخاص بالعنصر .mobile-dashboard-nav) */
+    #mobileSidebarNav {
+        margin-top: 0 !important;
+    }
+
+    /* روابط الداشبورد في الموبايل - الحاوية */
+    .sidebar-nav-mobile-wrap {
+      height: 50px; /* تقليل الارتفاع */
+      
+       position: fixed;
+       bottom: 1px;
+        display: flex;
+        flex-direction: row;
+        gap: 5px; /* تقليص المسافة بين الأزرار */
+        overflow-x: auto; /* يسمح بالتمرير */
+        white-space: nowrap;
+        flex-grow: 1;
+        padding: 0;
+        margin: 0 !important; /* ضمان عدم خروج الحاوية من الشريط الأب */
+    }
+
+    /* 🛑 زر الهوم - تم تصغيره ليتسع */
+    .home-btn-mobile {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 7px; /* تصغير الـ Padding */
+        border-radius: 6px;
+        background: #e0f2fe;
+        color: #0078ff;
+        flex-shrink: 0;
+    }
+
+    /* 🛑 روابط القائمة - تم تصغيرها لضمان الاتساع في شاشة الهاتف */
+    .sidebar-nav-mobile-wrap .sidebar-item {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 8px; /* تصغير الـ Padding */
+        border-radius: 6px;
+        /* تم تغيير الخلفية هنا لإظهار المشكلة، لكن نرجعها لتنسيقك */
+        background: #f3f4f6; 
+        font-size: 12px; /* تصغير الخط */
+        color: #4b5563; /* تغيير اللون للأفضل */
+        flex-shrink: 0;
+    }
+
+    .sidebar-nav-mobile-wrap .sidebar-item.active {
+        background: #0078ff;
+        color: #000000;
+    }
+
+    .sidebar-nav-mobile-wrap .sidebar-item i {
+        font-size: 12px; /* تصغير الأيقونة */
+        margin-right: 4px; /* تقليل المسافة بعد الأيقونة */
+        color: inherit; /* لضمان أخذ لون النص */
+    }
+
+    /* -------------------------------------- */
+    /* 3. عناصر المحتوى */
+    /* -------------------------------------- */
+
+    .admin-page-content h2 {
+        font-size: 22px;
+    }
+
+    .dashboard-subtext {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    /* الكروت */
+    .kpi-cards {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .kpi-card {
+        width: 100%;
+    }
+
+    /* الجدول */
+    .admin-page-content-scroll {
+        overflow-x: auto;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    /* الفورم */
+    .add-room-form {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .image-upload-area {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* ال toggle */
+    .toggle-switch {
+        transform: scale(0.9);
+    }
+}
+
+
+/* ===== Header Search Bar Styles ===== */
+
+/* الحاوية التي تحمل أيقونة البحث والحقل نفسه */
+.search-field-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* الأيقونة العادية (موجودة مسبقاً) */
+#toggleSearchBtn {
+    z-index: 15; /* لتبقى فوق حقل البحث عند الظهور */
+}
+
+/* حاوية الإدخال المخفية */
+.search-input-wrap {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    z-index: 10;
+    min-width: 300px;
+    transition: opacity 0.3s, width 0.3s;
+}
+
+.search-input-wrap.hidden {
+    /* يجب تعديل .hidden ليعمل بشكل سلس مع الانتقالات */
+    display: none; 
+}
+
+#headerSearchInput {
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    flex-grow: 1;
+    outline: none;
+}
+
+.close-search-btn {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+/* قائمة النتائج المنسدلة */
+.search-results-dropdown {
+    position: absolute;
+    top: 100%; /* أسفل حقل البحث مباشرة */
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 9;
+    padding: 5px 0;
+}
+
+.search-result-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.search-result-item:hover {
+    background: #f3f4f6;
+}
+
+/* Responsive adjustment: Hide search field completely on mobile */
+/* ===== Responsive Fix: Header Search on Mobile ===== */
+@media (max-width: 768px) {
+
+    /* 1. إظهار الأيقونة فقط في وضع الموبايل (كما كان سابقاً) */
+    .search-field-container {
+        position: relative;
+    }
+
+    /* 2. تنسيق حقل البحث ليظهر بملء الشاشة تحت الهيدر */
+    .search-input-wrap {
+        /* إظهاره بملء الشاشة */
+        position: fixed; /* لتثبيته في الأعلى */
+        top: 70px; /* أسفل الهيدر مباشرة (ارتفاع الهيدر 70px) */
+        left: 0;
+        right: 0;
+        width: 100% !important; /* يأخذ كامل عرض الشاشة */
+        min-width: 100% !important;
+        transform: translateY(0); /* إلغاء التنسيق الرأسي */
+        border-radius: 0; /* إلغاء استدارة الحواف */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 8px 15px; /* توسيع الـ Padding */
+        
+        /* يجب إبقاء هذا على display: none; للتحكم به بالـ JS */
+        /*
+        &.hidden { 
+             display: none; 
+        } 
+        */
+    }
+    
+    /* 3. تنسيق حقل الإدخال ليأخذ عرض الحاوية */
+    #headerSearchInput {
+        padding: 10px 12px;
+    }
+
+    /* 4. إظهار حقل البحث في الـ actions container (لتكون الأيقونة مرئية) */
+    header .block .actions {
+        /* تأكد أن الـ actions مرئية في وضع الموبايل للسماح بظهور الأيقونة */
+        display: flex;
+    }
+}
+.rooms-page {
+    padding: 20px 5vw;
+}
+
+.rooms-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) 260px;
+    gap: 30px;
+}
+
+.rooms-filters {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+    height: fit-content;
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.filter-group {
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 6px;
+    cursor: pointer;
+    color: #444;
+}
+
+@media(max-width:900px) {
+    .rooms-layout {
+        grid-template-columns: 1fr;
+    }
+    .rooms-filters {
+        order: -1;
+    }
+}
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.filters-title-row h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.filters-clear {
+    background: transparent;
+    border: none;
+    color: #0078ff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.filters-clear:hover {
+    text-decoration: underline;
+}
+
