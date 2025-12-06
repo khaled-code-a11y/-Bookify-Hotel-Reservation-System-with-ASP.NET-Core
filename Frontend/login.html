@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - AmunraHotel</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000, #010049);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .login-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+      padding: 60px 90px;
+      width: 950px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Left side (info section) */
+    .login-info {
+      width: 45%;
+    }
+
+    .login-info h2 {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+
+    .login-info p {
+      color: #dbeafe;
+      line-height: 1.6;
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    .login-info ul {
+      list-style: none;
+      line-height: 2;
+      color: #e0f2fe;
+      font-size: 14px;
+    }
+
+    /* Right side (form section) */
+    .login-form {
+      width: 45%;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-form h3 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .login-form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .login-form button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #0078ff;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-form button:hover {
+      background: #005fcc;
+    }
+
+    .login-form .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .social button {
+      flex: 1;
+      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .social button:hover {
+      background: #fff;
+      color: #1e40af;
+    }
+
+    .login-form a {
+      display: block;
+      color: #bfdbfe;
+      text-decoration: none;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .login-form a:hover {
+      text-decoration: underline;
+    }
+
+    /* Back to Home button */
+    .back-home {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.3s;
+      border: 1px solid #cbd5e1;
+    }
+
+    .back-home:hover {
+      background: #fff;
+      color: #1e40af;
+    }
+
+    @media (max-width: 900px) {
+      .login-container {
+        flex-direction: column;
+        padding: 40px 20px;
+        width: 90%;
+      }
+
+      .login-info,
+      .login-form {
+        width: 100%;
+      }
+
+      .login-info {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-info">
+      <h2>Welcome to AmunraHotel Login</h2>
+      <p>Access your account to manage bookings, check reservations, and enjoy exclusive hotel services.</p>
+      <ul>
+        <li>🔒 Secure & Reliable</li>
+        <li>⚡ Fast Access</li>
+        <li>🌐 Available Anytime, Anywhere</li>
+      </ul>
+    </div>
+
+    <div class="login-form">
+      <h3>Welcome Back</h3>
+      <input type="email" placeholder="Email Address" required />
+      <input type="password" placeholder="Password" required />
+      <button>Sign In</button>
+      <a href="#">Forgot password?</a>
+
+      <div class="social">
+        <button>Google</button>
+        <button>Facebook</button>
+      </div>
+      <a href="#">Don’t have an account? Sign Up</a>
+
+      <!-- Back to Home Button -->
+      <a href="index.html" class="back-home">← Back to Home</a>
+    </div>
+  </div>
+
+</body>
+</html>

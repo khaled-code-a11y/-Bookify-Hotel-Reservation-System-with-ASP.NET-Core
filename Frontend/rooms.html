@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Rooms - AmunraHotel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="page-rooms">
+        <!-- Header -->
+        <header>
+            <div class="block">
+                <div class="logo">AmunraHotel</div>
+                <nav id="navbar">
+                    <a href="index.html">Home</a>
+                    <a href="rooms.html">Rooms</a>
+                    <a href="index.html#Offers">Offers</a>
+                    <a href="index.html#about">About</a>
+                    <a href="dashboard.html" class="admin-dashboard-link">Dashboard</a>
+                </nav>
+
+                <div class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+
+                <div class="actions">
+                    <div class="search-field-container">
+                        <button class="icon search-icon" id="toggleSearchBtn">🔍</button>
+                        <div class="search-input-wrap hidden" id="searchHeaderInput">
+                            <input type="text" id="headerSearchInput" placeholder="Search by hotel name...">
+                            <button class="close-search-btn" id="closeSearchInput">&times;</button>
+                            <div class="search-results-dropdown hidden" id="searchResults"></div>
+                        </div>
+                    </div>
+
+                    <div class="user-dropdown-container">
+                        <button class="icon user-icon" id="userIcon">👤</button>
+
+                        <div class="user-dropdown-menu" id="userMenu">
+                            <a href="#" class="dropdown-item dashboard">
+                                <div class="user-info">
+                                    <img src="img/khaled.png" alt="User Avatar" class="user-avatar">
+                                    <div>
+                                        <span class="user-name">AmunraHotel</span>
+                                        <span class="user-email">user.AmunraHotel@gmail.com</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="#" class="dropdown-item" id="openManageModalLink">
+                                <i class="fas fa-cog"></i> Manage account
+                            </a>
+                            <a href="my-bookings.html" class="dropdown-item">
+                                <i class="fas fa-book"></i> My Bookings
+                            </a>
+                            <a href="index.html" class="dropdown-item sign-out">
+                                <i class="fas fa-sign-out-alt"></i> Sign out
+                            </a>
+
+                            <small class="secure-label">Secured by Amunra</small>
+                        </div>
+                    </div>
+
+                    <!-- زرار اللوجين: id جديد واضح -->
+                    <button class="login-btn" id="openLoginModalBtn">Login</button>
+                </div>
+            </div>
+        </header>
+
+        <main style="padding-top:90px;">
+
+            <section class="rooms-page">
+                <div class="rooms-layout">
+
+                    <!-- ====================== LEFT SIDE – ROOMS LIST ====================== -->
+                    <div class="rooms-list">
+                        <div class="container" style="max-width:1100px;margin:0 auto;padding:40px 20px;">
+                            <h2 style="color:#fff;margin-bottom:20px;">Hotel Rooms</h2>
+
+                            <!-- Room 1 -->
+                            <article class="room-item"
+                                     data-bed="single"
+                                     data-type="luxury"
+                                     data-price="100">
+                                <div class="room-media">
+                                    <img src="img/chastity-cortijo-M8iGdeTSOkg-unsplash 1.png" alt="The Grand Resort" />
+                                </div>
+                                <div class="room-info">
+                                    <h3 class="room-title">The Grand Resort</h3>
+                                    <p class="room-sub">San Diego, CA, USA</p>
+                                    <p class="room-desc">
+                                        Spacious suite with king bed, sea view, breakfast included and fast wifi.
+                                    </p>
+
+                                    <div class="room-meta">
+                                        <span class="amenity">free wifi</span>
+                                        <span class="amenity">free breakfast</span>
+                                        <span class="amenity">room service</span>
+                                    </div>
+
+                                    <div class="room-bottom">
+                                        <div class="room-price">$100 <span>/day</span></div>
+                                        <div>
+                                            <a class="btn-outline" href="hotel.html?slug=grand-resort">View Details</a>
+                                            <a class="btn-primary" href="booking.html?slug=grand-resort">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Room 2 -->
+                            <article class="room-item"
+                                     data-bed="double"
+                                     data-type="family"
+                                     data-price="150">
+                                <div class="room-media">
+                                    <img src="img/choctaw-country-blogs-january-1868931.jpg"
+                                         alt="The Regal Palace" />
+                                </div>
+                                <div class="room-info">
+                                    <h3 class="room-title">The Regal Palace</h3>
+                                    <p class="room-sub">Skyline Boulevard, NY, USA</p>
+                                    <p class="room-desc">
+                                        Modern room with city view, smart TV and complimentary breakfast.
+                                    </p>
+                                    <div class="room-meta">
+                                        <span class="amenity">free wifi</span>
+                                        <span class="amenity">free breakfast</span>
+                                    </div>
+                                    <div class="room-bottom">
+                                        <div class="room-price">$150 <span>/day</span></div>
+                                        <div>
+                                            <a class="btn-outline" href="hotel.html?slug=regal-palace">View Details</a>
+                                            <a class="btn-primary" href="booking.html?slug=regal-palace">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- More rooms -->
+                            <div id="additionalRooms" class="hidden_rooms"
+                                 style="max-width:1100px;margin:20px auto;padding:0 20px;">
+
+                                <!-- Room 3 -->
+                                <article class="room-item"
+                                         data-bed="double"
+                                         data-type="luxury"
+                                         data-price="200">
+                                    <div class="room-media">
+                                        <img src="img/visualsofdana-T5pL6ciEn-I-unsplash 1.png" alt="">
+                                    </div>
+                                    <div class="room-info">
+                                        <h3 class="room-title">Crystal Waters Resort</h3>
+                                        <p class="room-sub">Night Sky Parkway, AZ, USA</p>
+                                        <p class="room-desc">Bright rooms, city view and premium amenities.</p>
+                                        <div class="room-bottom">
+                                            <div class="room-price">$200 <span>/day</span></div>
+                                            <div>
+                                                <a class="btn-outline" href="hotel.html?slug=crystal-waters">View Details</a>
+                                                <a class="btn-primary" href="booking.html?slug=crystal-waters">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <!-- Room 4 -->
+                                <article class="room-item"
+                                         data-bed="family"
+                                         data-type="family"
+                                         data-price="250">
+                                    <div class="room-media">
+                                        <img src="img/chastity-cortijo-M8iGdeTSOkg-unsplash 1.png" alt="">
+                                    </div>
+                                    <div class="room-info">
+                                        <h3 class="room-title">Skyline Luxe Hotel</h3>
+                                        <p class="room-sub">Metro Avenue, Chicago, USA</p>
+                                        <p class="room-desc">Luxury suite, large windows and gourmet breakfast.</p>
+                                        <div class="room-bottom">
+                                            <div class="room-price">$250 <span>/day</span></div>
+                                            <div>
+                                                <a class="btn-outline" href="hotel.html?slug=skyline-luxe">View Details</a>
+                                                <a class="btn-primary" href="booking.html?slug=skyline-luxe">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <div style="text-align:center;margin-top:40px;">
+                                <button id="viewMoreRooms" class="view-allRooms-box" aria-expanded="false">
+                                    Show More
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ====================== RIGHT SIDE – FILTERS ====================== -->
+                    <aside class="rooms-filters">
+                        <div class="filters-header">
+                            <div class="filters-title-row">
+                                <h3>Filters</h3>
+                            </div>
+
+                            <button class="filters-clear" id="clearFiltersBtn">
+                                Filters · Clear
+                            </button>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Popular filters</h4>
+                            <label>
+                                <input type="checkbox" data-filter="bed" value="single" />
+                                Single Bed
+                            </label>
+                            <label>
+                                <input type="checkbox" data-filter="bed" value="double" />
+                                Double Bed
+                            </label>
+                            <label>
+                                <input type="checkbox" data-filter="type" value="luxury" />
+                                Luxury Room
+                            </label>
+                            <label>
+                                <input type="checkbox" data-filter="type" value="family" />
+                                Family Suite
+                            </label>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Price Range</h4>
+                            <label>
+                                <input type="radio" name="price" value="0-150" />
+                                $0 to $150
+                            </label>
+                            <label>
+                                <input type="radio" name="price" value="151-200" />
+                                $151 to $200
+                            </label>
+                            <label>
+                                <input type="radio" name="price" value="201-300" />
+                                $201 to $300
+                            </label>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>Sort By</h4>
+                            <label>
+                                <input type="radio" name="sort" value="none" checked />
+                                Default
+                            </label>
+                            <label>
+                                <input type="radio" name="sort" value="price-asc" />
+                                Price: Low to High
+                            </label>
+                            <label>
+                                <input type="radio" name="sort" value="price-desc" />
+                                Price: High to Low
+                            </label>
+                        </div>
+
+                    </aside>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- سكربتات الصفحة العامة -->
+    <script src="main.js"></script>
+
+    <!-- ========== LOGIN MODAL OVERLAY ========== -->
+    <!-- خليه بره .page-rooms عادي -->
+    <div class="login-modal-overlay hidden" id="loginModal">
+        <div class="login-modal-box">
+            <button class="login-close-btn" id="closeLoginModal">&times;</button>
+
+            <div class="login-modal-inner">
+                <div class="login-left">
+                    <h2>Welcome to AmunraHotel</h2>
+                    <p>Access your account to manage bookings, check reservations and enjoy exclusive offers.</p>
+
+                    <ul class="login-benefits">
+                        <li>⚡ Fast & easy booking</li>
+                        <li>🔒 Secure & reliable</li>
+                        <li>🌍 Available anytime, anywhere</li>
+                    </ul>
+                </div>
+
+                <div class="login-right">
+                    <h3>Welcome Back</h3>
+
+                    <form class="login-form">
+                        <label>
+                            <span>Email Address</span>
+                            <input type="email" placeholder="you@example.com" required />
+                        </label>
+
+                        <label>
+                            <span>Password</span>
+                            <input type="password" placeholder="••••••••" required />
+                        </label>
+
+                        <a href="#" class="forgot-link">Forgot password?</a>
+
+                        <button type="submit" class="btn-primary full-width" style="margin-top:10px;">
+                            Sign In
+                        </button>
+
+                        <div class="login-social">
+                            <button type="button" class="btn-outline full-width">Continue with Google</button>
+                            <button type="button" class="btn-outline full-width">Continue with Facebook</button>
+                        </div>
+
+                        <p class="login-footer-text">
+                            Don’t have an account?
+                            <a href="#">Sign up</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========== /LOGIN MODAL OVERLAY ========== -->
+
+    <!-- سكربت بسيط لفتح/قفل المودال -->
+    <script>
+      (function () {
+        const openBtn  = document.getElementById('loginModal'); // الزرار
+        const modal    = document.getElementById('openLoginModal');        // الأوفرلاي
+        const closeBtn = document.getElementById('closeLoginModal');   // زرار ال X
+
+        if (!openBtn || !modal || !closeBtn) {
+          console.log('Login modal elements not found', { openBtn, modal, closeBtn });
+          return;
+        }
+
+        // فتح المودال
+        openBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          modal.classList.remove('hidden');
+        });
+
+        // قفل بالمفتاح X
+        closeBtn.addEventListener('click', function () {
+          modal.classList.add('hidden');
+        });
+
+        // قفل لما تضغطي برة الصندوق
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) {
+            modal.classList.add('hidden');
+          }
+        });
+      })();
+    </script>
+</body>
+
+</html>

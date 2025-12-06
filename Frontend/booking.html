@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Booking - AmunraHotel</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="page-booking">
+        <header>
+            <div class="block">
+                <div class="logo">AmunraHotel</div>
+                <nav id="navbar">
+                    <a href="index.html">Home</a>
+                    <a href="rooms.html">Rooms</a>
+                    <a href="index.html#Offers">Offers</a>
+                    <a href="index.html#about">About</a>
+                    <a href="dashboard.html" class="admin-dashboard-link">Dashboard</a>
+                </nav>
+                <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                <div class="actions"><button class="login-btn">Login</button></div>
+            </div>
+        </header>
+
+        <main>
+            <div class="booking-page-container">
+                <h2>Book Your Stay</h2>
+                <div id="booking-box">
+                    <form id="bookingForm">
+                        <div class="form-dates-guests-group">
+                            <label>
+                                Check-in
+                                <input required type="date" name="checkin" />
+                            </label>
+                            <label>
+                                Check-out
+                                <input required type="date" name="checkout" />
+                            </label>
+                            <label>
+                                Guests
+                                <select name="guests">
+                                    <option>1</option>
+                                    <option selected>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+
+                                </select>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button class="btn-primary" type="submit">Confirm Booking</button>
+                            <a href="#" id="backToHotel">Back to Hotel</a>
+                        </div>
+                    </form>
+                </div>
+                <div id="bookingResult"></div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        function q(n) { return new URLSearchParams(location.search).get(n); }
+        const slug = q('slug') || 'grand-resort';
+        document.getElementById('backToHotel').href = 'hotel.html?slug=' + slug;
+
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const data = new FormData(e.target);
+            document.getElementById('bookingResult').innerHTML = `
+        <div style="padding:18px;background:#f3f4f6;border-radius:12px;">
+          <strong>Booking Confirmed</strong>
+          <p>Hotel: ${slug.replace(/-/g, ' ')}</p>
+          <p>Check-in: ${data.get('checkin')} — Check-out: ${data.get('checkout')}</p>
+          <p>Guests: ${data.get('guests')}</p>
+        </div>
+      `;
+            e.target.reset();
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+
+
+</html>
