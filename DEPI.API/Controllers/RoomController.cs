@@ -6,11 +6,14 @@ namespace DEPI.API.Controllers
     public class RoomController : ControllerBase
     {
         private readonly IRoomService _roomService;
+        private readonly IPaymentService _paymentService;
 
-        public RoomController(IRoomService roomService)
+        public RoomController(IRoomService roomService , IPaymentService paymentService)
         {
             _roomService = roomService;
+            _paymentService = paymentService;
         }
+
 
         #region Get All Rooms
         [HttpGet("getAllRooms")]
@@ -38,11 +41,22 @@ namespace DEPI.API.Controllers
         [HttpPost("addRoom")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> AddRoom([FromBody] RoomDTO roomdto)
         {
-
-            await _roomService.AddRoomAsync(roomdto);
-            return NoContent();
+            try
+            {
+                await _roomService.AddRoomAsync(roomdto);
+                return StatusCode(StatusCodes.Status201Created, new { Message = "Room added successfully" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { Message = "An unexpected error occurred." });
+            }
         }
         #endregion
 
@@ -50,10 +64,27 @@ namespace DEPI.API.Controllers
         [HttpPut("updateRoom/{roomId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateRoom([FromBody] RoomDTO roomdto, int roomId)
         {
-            await _roomService.UpdateRoomAsync(roomdto, roomId);
-            return NoContent();
+            try
+            {
+                await _roomService.UpdateRoomAsync(roomdto, roomId);
+                return NoContent();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { Message = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new { Message = "An unexpected error occurred." });
+            }
         }
         #endregion
 
@@ -64,7 +95,7 @@ namespace DEPI.API.Controllers
         public async Task<IActionResult> DeleteRoom(int roomId)
         {
             await _roomService.DeleteRoomAsync(roomId);
-            return NoContent();
+            return NoContent();           
         }
         #endregion
 
@@ -105,9 +136,22 @@ namespace DEPI.API.Controllers
             try
             {
                 var reservationId = await _roomService.ReserveRoomAsync(reservation);
+
+                var paymentDTO = new PaymentDTO
+                {
+                    Email = reservation.Email, 
+                    PaymentMethod = reservation.PaymentMethod, 
+                    roomId = reservation.roomId,
+                    startDate = reservation.startDate,
+                    endDate = reservation.endDate,
+                    customerId = reservation.customerId
+                };
+
+                await _paymentService.ProcessPaymentAsync(paymentDTO);
+
                 return StatusCode(StatusCodes.Status201Created, new
                 {
-                    Message = "Room reserved successfully",
+                    Message = "Room reserved successfully and payment email sent",
                     ReservationId = reservationId,
                     RoomId = reservation.roomId
                 });
@@ -119,6 +163,10 @@ namespace DEPI.API.Controllers
             catch (InvalidOperationException ex)
             {
                 return BadRequest(new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An unexpected error occurred", Details = ex.Message });
             }
         }
         #endregion
@@ -153,6 +201,7 @@ namespace DEPI.API.Controllers
             });
         }
         #endregion
+
 
     }
 

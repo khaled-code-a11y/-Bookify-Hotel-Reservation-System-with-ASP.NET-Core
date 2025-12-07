@@ -24,6 +24,10 @@ namespace DEPI.DAL.Repositories
 
         public async Task AddRoomAsync(RoomModel room)
         {
+            if (_dbContext.Rooms.Any(r => r.RoomNumber == room.RoomNumber))
+            {
+                throw new InvalidOperationException($"Room number {room.RoomNumber} already exists.");
+            }
             await _dbContext.Rooms.AddAsync(room);
             await _dbContext.SaveChangesAsync();
         }
@@ -108,6 +112,34 @@ namespace DEPI.DAL.Repositories
 
             return availableRooms;
 
+        }
+
+        public Task<int> GetTotalRoomsBookingAsync()
+        {
+            var totalBookings = _dbContext.reservedrooms
+             .Where(r => r.Status == "Done")
+             .Count();
+
+            return Task.FromResult(totalBookings);
+
+        }
+
+        public async Task<int> GetTotalRevenueAsync()
+        {
+            var totalRevenue = await _dbContext.payments
+                .Where(p => p.ReservedRoom!.Status == "Done")
+                 .SumAsync(p => p.Amount);
+
+            return totalRevenue;
+        }
+
+        public async Task<List<ReservedroomModel>> getRecentBookingAsync()
+        {
+            return await _dbContext.reservedrooms
+                .Include(r => r.Customer!.User)
+                .Include(r => r.Room)
+                .Include(r => r.Payment)
+                .ToListAsync();
         }
 
 

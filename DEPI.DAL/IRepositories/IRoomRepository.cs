@@ -13,5 +13,8 @@ namespace DEPI.DAL.IRepositories
         Task<int> ReserveRoomAsync(ReservedroomModel reservedRoom);
         Task<IEnumerable<RoomModel>> GetAvailableRoomsAsync(DateTime startDate,DateTime EndDate,int roomCapacity );
 
+        Task<int> GetTotalRoomsBookingAsync();
+        Task<int> GetTotalRevenueAsync();
+        Task<List<ReservedroomModel?>> getRecentBookingAsync();
     }
 }

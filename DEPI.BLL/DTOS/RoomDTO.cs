@@ -1,5 +1,4 @@
 ﻿
-using DEPI.DAL.Entities;
 
 namespace DEPI.BLL.DTOS
 {
@@ -9,6 +8,6 @@ namespace DEPI.BLL.DTOS
         public int TypeId { get; set; }
         public bool isAvailable { get; set; }
 
-       
+
     }
 }

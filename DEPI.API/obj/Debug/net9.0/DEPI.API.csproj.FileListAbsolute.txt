@@ -309,7 +309,6 @@ F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\staticwebassets.development.json
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\staticwebassets.build.endpoints.json
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\swae.build.ex.cache
-F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\DEPI.API.csproj.Up2Date
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\DEPI.API.dll
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\refint\DEPI.API.dll
@@ -324,3 +323,5 @@ F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+F:\.NET study\Projects\DEPI\Project\DEPI\-Bookify-Hotel-Reservation-System-with-ASP.NET-Core\DEPI.API\bin\Debug\net9.0\DEPI.API.staticwebassets.runtime.json

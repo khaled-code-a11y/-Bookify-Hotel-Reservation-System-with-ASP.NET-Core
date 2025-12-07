@@ -10,3 +10,5 @@ global using Microsoft.AspNetCore.Mvc;
 global using DEPI.BLL.Validation;
 global using FluentValidation;
 global using DEPI.BLL.DTOS;
+global using AutoMapper;
+

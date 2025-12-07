@@ -1,4 +1,6 @@
-﻿namespace DEPI.BLL.Services
+﻿using DEPI.BLL.DTOS;
+
+namespace DEPI.BLL.Services
 {
     public class RoomService : IRoomService
     {
@@ -25,16 +27,25 @@
 
         public async Task AddRoomAsync(RoomDTO roomdto)
         {
-            var roomModel = _mapper.Map<RoomModel>(roomdto);
-            await _roomRepository.AddRoomAsync(roomModel);
+           
+            var room = new RoomModel
+            {
+                RoomNumber = roomdto.RoomNumber,
+                TypeId = roomdto.TypeId,
+                isAvailable = roomdto.isAvailable,
+            }; 
+            await _roomRepository.AddRoomAsync(room);
         }
 
         public async Task UpdateRoomAsync(RoomDTO roomDto, int roomId)
         {
             var existingRoom = await _roomRepository.GetRoomByIdAsync(roomId);
-            if (existingRoom == null) throw new KeyNotFoundException("Room not found");
+            if (existingRoom == null)
+                throw new KeyNotFoundException("Room not found");
 
-            _mapper.Map(roomDto, existingRoom);
+            existingRoom.RoomNumber = roomDto.RoomNumber;
+            existingRoom.TypeId = roomDto.TypeId;
+            existingRoom.isAvailable = roomDto.isAvailable;
 
             await _roomRepository.UpdateRoomAsync(existingRoom);
         }
@@ -81,6 +92,32 @@
 
         }
 
+        public Task<int> GetTotalRoomsBookingAsync()
+        {
+            return _roomRepository.GetTotalRoomsBookingAsync();
+        }
+
+        public Task<int> GetTotalRevenueAsync()
+        {
+            return _roomRepository.GetTotalRevenueAsync();
+        }
+
+        public async Task<List<RecentBookingDTO>> GetRecentBookingAsync()
+        {
+            var bookings = await _roomRepository.getRecentBookingAsync();
+
+            return bookings.Select(b => new RecentBookingDTO
+            {
+                UserName = b.Customer?.User!.Name ?? string.Empty,
+                RoomNumber = b.Room?.RoomNumber.ToString() ?? string.Empty,
+                Amount = b.Payment?.Sum(p => p.Amount) ?? 0,
+                PaymentStatus = b.Status
+            }).ToList();
+        }
+
 
     }
+
+
 }
+

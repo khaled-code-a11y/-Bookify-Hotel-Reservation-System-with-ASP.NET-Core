@@ -12,6 +12,9 @@ namespace DEPI.BLL.IServices
         Task<bool> checkAvailabiltyAsync(CheckAvailabiltyDTO checkAvailabilty);
         Task<int> ReserveRoomAsync(ReserveRoomDTO reserveRoom);
         Task<IEnumerable<RoomModel>> GetAvailableRoomsAsync(RoomSearchDTO search);
+        Task<int> GetTotalRoomsBookingAsync();
+        Task<int> GetTotalRevenueAsync();
+        Task<List<RecentBookingDTO>> GetRecentBookingAsync();
 
     }
 
